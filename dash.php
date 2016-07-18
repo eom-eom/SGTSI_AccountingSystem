@@ -19,20 +19,18 @@
 	<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
       </a>
 	  
-	  
 
 	<div class="navbar-custom-menu">
 		<ul class="nav navbar-nav">
-		<li><a href="#">Users</a></li>
-		<li><a href="#">Log-out</a></li>
+			<li><a data-toggle="control-sidebar">Multi-Function Calculator</a></li>
+			<li><a href="#">Log-Out</a></li>
 		</ul>
-
-		
-	</div>
-	  
-		
+	</div>	  
+	
   </nav>
 </header>
+
+
 
 <div class="main-sidebar">
   <!-- Inner sidebar -->
@@ -92,10 +90,47 @@
 					</li>
 			</ul>
       </li>
+	  <li class="treeview">
+			<a href="#">
+				<i class="fa fa-gear"></i>
+				<span>Settings</span>
+			</a>
+			<ul class="treeview-menu menu-open">
+					<li><a href="#">
+						<i class="fa  fa-users"></i>
+						<span>Users</span>
+						</a>
+					</li>
+					<li><a href="#">
+						<i class="fa fa-folder"></i>
+						<span>Chart of Accounts</span>
+						</a>
+					</li>
+					<li><a href="#">
+						<i class="fa fa-database"></i>
+						<span>Backup Restore</span>
+						</a>
+					</li>
+					<li><a href="#">
+						<i class="fa fa-folder-o"></i>
+						<span>Audit Trail</span>
+						</a>
+					</li>
+			</ul>
+      </li>
     </ul><!-- /.sidebar-menu -->
   </div>
 </div><!-- /.main-sidebar -->
 
+
+
+<div class="content-wrapper">
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Content of the sidebar goes here -->
+
+</aside>
+<div class="control-sidebar-bg"></div>
+</div>
 
 
 <?php
