@@ -1,22 +1,9 @@
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Accounting System</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link href="css/stylesheet.css">
-  <link rel="stylesheet" href="AdminLTE-2.3.5/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="AdminLTE-2.3.5/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="AdminLTE-2.3.5\dist\css\skins\_all-skins.css">
-  
+<?php
+	require_once('support/config.php');
+	addHead();
+?>
 
-  
-  
-  </head>
-  
-<body class="skin-blue sidebar-mini sidebar-collapse">
+
 	
 
 <header class="main-header" >
@@ -111,18 +98,6 @@
 
 
 
-<script src="AdminLTE-2.3.5/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>	
-<!-- Bootstrap 3.3.6 -->
-<script src="AdminLTE-2.3.5/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="AdminLTE-2.3.5/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="AdminLTE-2.3.5/dist/js/app.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places,drawing&amp;sensor=false&amp;key=AIzaSyB1hBlgm-B5aaLB2470dyJVGyC-nx_UnQg"></script>
-<script src="js/map.js"></script>
-<script src="js/gmaps.js"></script>
-
-</body>
-</html>
+<?php
+	addFoot();
+?>

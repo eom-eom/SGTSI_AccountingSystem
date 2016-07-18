@@ -38,6 +38,3 @@
 <?php
 	addFoot();
 ?>
-
-</body>
-</html>
