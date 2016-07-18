@@ -9,6 +9,9 @@
 	function addFoot($DirectoryLevel=0){
 		require_once str_repeat('../',$DirectoryLevel).'templates/footer.php';
 	}
-	
+	function redirect($url)
+	{
+		header("location:".$url);
+	}
 	
 ?>
