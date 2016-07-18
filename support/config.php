@@ -1,13 +1,13 @@
 <?php
 	session_start();
-	define("APPNAME","Accounting System")
+	define("APPNAME","Accounting System");
 	
 	function addHead($pageTitle=APPNAME,$DirectoryLevel=0){
-		require_once str_repeat('../',$DirectoryLevel).'template/head.php';
+		require_once str_repeat('../',$DirectoryLevel).'templates/head.php';
 	}
 	
 	function addFoot($DirectoryLevel=0){
-		require_once str_repeat('../',$DirectoryLevel).'template/footer.php';
+		require_once str_repeat('../',$DirectoryLevel).'templates/footer.php';
 	}
 	
 	
