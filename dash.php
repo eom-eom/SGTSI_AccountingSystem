@@ -39,12 +39,23 @@
   <ul class="sidebar-menu">
       <li class="header">Accounting Tools</li>
       <!-- Optionally, you can add icons to the links -->
-		<li>
+		<li class="treeview">
 			<a href="#">
 				<i class="fa fa-file-text"></i> 
 				<span>General Journal</span>
 			</a>
-		</li>
+			<ul class="treeview-menu menu-open">
+					<li><a href="#">
+						<i class="fa fa-file-text-o"></i>
+						<span>View General Journal</span>
+						</a>
+					</li>
+					<li><a href="#">
+						<i class="fa fa-file-text-o"></i>
+						<span>New Journal Entry</span>
+						</a>
+					</li>
+			</ul>
 		<li class="treeview">
 			<a href="#">
 				<i class="fa fa-file-text"></i> 
