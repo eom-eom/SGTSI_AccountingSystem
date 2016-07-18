@@ -12,4 +12,4 @@
 		<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 	</head>
 	
-<body class="skin-navy sidebar-mini sidebar-collapse">
+<body class="skin-blue sidebar-mini sidebar-collapse">
