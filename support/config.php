@@ -17,6 +17,8 @@
 		require_once str_repeat('../',$DirectoryLevel).'templates/navbar.php';
 	}
 	
+	
+	
 	function redirect($url)
 	{
 		header("location:".$url);
