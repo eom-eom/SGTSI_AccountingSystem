@@ -15,7 +15,7 @@
 
 	<div class="navbar-custom-menu">
 		<ul class="nav navbar-nav">
-			<li><a data-toggle="control-sidebar"><i class="glyphicon glyphicon-th"></i> <span>Multi-Function Calculator</span></a></li>
+			<li><a data-toggle="control-sidebar"><i class="fa fa-calculator"></i> <span>Multi-Function Calculator</span></a></li>
 			<li><a href="../php/LoggingOut.php">Log-Out</a></li>
 		</ul>
 	</div>	
