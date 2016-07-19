@@ -17,6 +17,25 @@
 	function addNavBar($DirectoryLevel=0){
 		require_once str_repeat('../',$DirectoryLevel).'templates/navbar.php';
 	}
+	
+	///Alerting
+	
+	function setAlert($content=NULL,$alerttype='danger'){
+		$_SESSION[APPNAME]['alertcontent'] = $content;
+		$_SESSION[APPNAME]['alerttype'] = $alerttype;
+	}
+	
+	function Alert(){
+		if(isset($_SESSION[APPNAME]['alertcontent'])){
+			include_once('templates/alert.php');
+		}
+	}
+	
+	function unsetAlert(){
+		$_SESSION[APPNAME]['alertcontent'] = NULL;
+		$_SESSION[APPNAME]['alerttype'] = NULL;
+	}
+	//END ALERT//
 	//END UI//
 	
 	//Navigation//

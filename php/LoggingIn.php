@@ -12,13 +12,18 @@
 			if($query['is_logged_in']==0){
 				if(decryptIt($query['password'])==decryptIt($password)){
 					//echo 'log in good';
-					
+					$_SESSION[APPNAME]['UserName']=$query['username'];
+					$userId = $query['user_id'];
+					$_SESSION[APPNAME]['UserId'] = $userId;
+					$connection->myQuery("UPDATE `users` SET `is_logged_in` = '1' where user_id='$userId'");
 					redirect('../dash.php');
 				}else{
-					echo 'Wrong Username /Password';
+					setAlert('Wrong Username /Password','danger');
+					redirect('../index.php');
 				}
 			}else{
-				echo 'is deleted in';
+				setAlert('User is deleted','danger');
+				redirect('../index.php');
 			}
 		}
 		

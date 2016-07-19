@@ -15,6 +15,10 @@
 
 	<div class="login-box-body">
 		<div class="form-horizontal" >
+		<?php
+			Alert();
+			unsetAlert();
+		?>
 			<form method="POST" action='php/LoggingIn.php'>
 				<div class="form-group has-feedback">
 				<input class="form-control" type="text"  name="username" placeholder="Username" required></input>
