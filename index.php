@@ -15,20 +15,21 @@
 
 	<div class="login-box-body">
 		<div class="form-horizontal" >
-			<div class="input-group">
-			<input class="form-control" type="text"  placeholder="Username"></input>
-			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-			</div>
-			<div class="input-group">
-			<input class="form-control" type="password"  placeholder="Password"></input>
-			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-			</div>
-			<br>
-			
+			<form method="POST" action='php/LoggingIn.php'>
+				<div class="form-group has-feedback">
+				<input class="form-control" type="text"  name="username" placeholder="Username" required></input>
+				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+				<input class="form-control" type="password" name="password" placeholder="Password" required></input>
+				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<br>
+				<button type="submit" class="btn btn-primary">Log In</button>
+			</form>
 		</div>
 		
-		<button type="button" class="btn btn-primary">Log In</button>
-		<button type="button" class="btn btn-danger">Cancel</button>
+		
 	</div>
 </div>
 
