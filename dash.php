@@ -22,7 +22,7 @@
 
 	<div class="navbar-custom-menu">
 		<ul class="nav navbar-nav">
-			<li><a data-toggle="control-sidebar">Multi-Function Calculator</a></li>
+			<li><a data-toggle="control-sidebar"><i class="glyphicon glyphicon-th"></i> <span>Multi-Function Calculator</span></a></li>
 			<li><a href="#">Log-Out</a></li>
 		</ul>
 	</div>	  
