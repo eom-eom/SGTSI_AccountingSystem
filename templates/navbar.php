@@ -51,6 +51,7 @@
            </div>
 		   <br>
 				<button type="submit" onclick="return CODS()" class="btn bg-olive btn-xs">Compute</button>
+				<button type="reset" class="btn bg-maroon btn-xs">Clear</button>
 		</form>
         </div><!-- /.box-body -->
       </div>
@@ -98,6 +99,7 @@
 				</div>
 			<br>
 			<button type="submit" onclick="return DV()" class="btn bg-olive btn-xs">Compute</button>
+			<button type="reset" class="btn bg-maroon btn-xs">Clear</button>
 		</form>
         </div><!-- /.box-body -->
       </div>
@@ -150,6 +152,7 @@
            </div>
 		   <br>
 			<button type="submit" onclick="return BR()" class="btn bg-olive btn-xs">Compute</button>
+			<button type="reset" class="btn bg-maroon btn-xs">Clear</button>
 		</form>
         </div><!-- /.box-body -->
       </div>
