@@ -1,6 +1,6 @@
 <?php
 	require_once('support/config.php');
-	addHead('Dashboard');
+	addHead('General Joural');
 	addNavBar();
 	addSideBar();
 ?>
@@ -43,5 +43,5 @@
 </div>
 
 <?php
-	addFootsection
+	addFoot();
 ?>

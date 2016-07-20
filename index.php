@@ -1,7 +1,11 @@
 
 <?php
 	require_once('support/config.php');
-	addHead();
+	if(loggedId()){
+		redirect('dash.php');
+	}else{
+		addHead();
+	}
 ?>
 
 

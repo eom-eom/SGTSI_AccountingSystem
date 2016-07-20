@@ -43,6 +43,15 @@
 	{
 		header("location:".$url);
 	}
+	
+	function loggedId(){
+	if(isset($_SESSION[APPNAME]['UserName'])){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	//End Navigation
 	
 	//Password Encryption Same as other Configs//

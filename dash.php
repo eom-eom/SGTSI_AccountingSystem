@@ -1,8 +1,14 @@
 <?php
 	require_once('support/config.php');
-	addHead('Dashboard');
-	addNavBar();
-	addSideBar();
+	if(loggedId()){
+		addHead('Dashboard');
+		addNavBar();
+		addSideBar();
+	}else{
+		redirect('index.php');
+		setAlert('Please log in to continue','danger');
+	}
+	
 ?>
 
 <div class="content-wrapper">
