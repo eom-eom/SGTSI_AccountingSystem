@@ -6,6 +6,12 @@
       <li class="header">Accounting Tools</li>
       <!-- Optionally, you can add icons to the links -->
 		<li class="treeview">
+				<a href="dash.php">
+				<i class="fa fa-dashboard"></i> 
+				<span>Dashboard</span>
+			</a>
+		</li>
+		<li class="treeview">
 			<a href="#">
 				<i class="glyphicon glyphicon-list-alt"></i> 
 				<span>General Journal</span>
@@ -33,7 +39,7 @@
 						<span>General Ledger</span>
 						</a>
 					</li>
-					<li><a href="#">
+					<li><a href="trial_balance.php">
 						<i class="fa fa-file-text"></i>
 						<span>Trial Balance</span>
 						</a>
@@ -72,7 +78,7 @@
 	  <!-- USER VALIDATION -->
 	  <?php
 	  
-	  if($_SESSION[APPNAME]['UserType'] = "admin"){
+	  if($_SESSION[APPNAME]['UserType'] == "admin"){
 		echo "<li class='treeview'>
 				<a href='#'>
 					<i class='fa fa-gear'></i>
@@ -100,7 +106,7 @@
 							</a>
 						</li>
 					</ul>
-				</li>"}
+				</li>";}
 	  else {
 		echo "<li class='treeview'>
 				<a href='#'>
@@ -119,7 +125,7 @@
 							</a>
 						</li>
 					</ul>
-				</li>"} 
+				</li>";} 
 		?>
     </ul><!-- /.sidebar-menu -->
   </div>
