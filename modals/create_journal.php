@@ -1,5 +1,5 @@
 
-<div class="modal" id='modal_createjournal'>
+<div class="modal fade" id='modal_createjournal'>
     <div class="modal-dialog">
       <div class="modal-content">
         <form method="POST" action='addjournal.php'>
