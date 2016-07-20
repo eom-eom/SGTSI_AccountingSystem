@@ -67,34 +67,60 @@
 					</li>
 			</ul>
       </li>
-	  <li class="treeview">
-			<a href="#">
-				<i class="fa fa-gear"></i>
-				<span>Settings</span>
-			</a>
-			<ul class="treeview-menu menu-open">
-					<li><a href="#">
-						<i class="fa  fa-users"></i>
-						<span>Users</span>
-						</a>
-					</li>
-					<li><a href="#">
-						<i class="fa fa-folder"></i>
-						<span>Chart of Accounts</span>
-						</a>
-					</li>
-					<li><a href="#">
-						<i class="fa fa-database"></i>
-						<span>Backup Restore</span>
-						</a>
-					</li>
-					<li><a href="#">
-						<i class="fa fa-folder-o"></i>
-						<span>Audit Trail</span>
-						</a>
-					</li>
-			</ul>
-      </li>
+	  
+	  
+	  <!-- USER VALIDATION -->
+	  <?php
+	  
+	  if($_SESSION[APPNAME]['UserType'] = "admin"){
+		echo "<li class='treeview'>
+				<a href='#'>
+					<i class='fa fa-gear'></i>
+					<span>Settings</span>
+				</a>
+					<ul class='treeview-menu menu-open'>
+						<li><a href='#'>
+							<i class='fa  fa-users'></i>
+							<span>Users</span>
+							</a>
+						</li>
+						<li><a href='#'>
+							<i class='fa fa-folder'></i>
+							<span>Chart of Accounts</span>
+							</a>
+						</li>
+						<li><a href='#'>
+							<i class='fa fa-database'></i>
+							<span>Backup Restore</span>
+							</a>
+						</li>
+						<li><a href='#'>
+							<i class='fa fa-folder-o'></i>
+							<span>Audit Trail</span>
+							</a>
+						</li>
+					</ul>
+				</li>"}
+	  else {
+		echo "<li class='treeview'>
+				<a href='#'>
+					<i class='fa fa-gear'></i>
+					<span>Settings</span>
+				</a>
+					<ul class='treeview-menu menu-open'>
+						<li><a href='#'>
+							<i class='fa fa-folder'></i>
+							<span>Chart of Accounts</span>
+							</a>
+						</li>
+						<li><a href='#'>
+							<i class='fa fa-folder-o'></i>
+							<span>Audit Trail</span>
+							</a>
+						</li>
+					</ul>
+				</li>"} 
+		?>
     </ul><!-- /.sidebar-menu -->
   </div>
 </div><!-- /.main-sidebar -->

@@ -13,6 +13,8 @@
 				if(decryptIt($query['password'])==decryptIt($password)){
 					//echo 'log in good';
 					$_SESSION[APPNAME]['UserName']=$query['username'];
+					$_SESSION[APPNAME]['FullName']=$query['full_name'];
+					$_SESSION[APPNAME]['UserType']=$query['user_type'];
 					$userId = $query['user_id'];
 					$_SESSION[APPNAME]['UserId'] = $userId;
 					$connection->myQuery("UPDATE `users` SET `is_logged_in` = '1' where user_id='$userId'");

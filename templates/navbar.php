@@ -12,15 +12,24 @@
 	<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
       </a>
 	  
-
 	<div class="navbar-custom-menu">
-		<ul class="nav navbar-nav">
-			<li>
-			<?php 
-					$user = $_SESSION[APPNAME]['UserName'];
-			echo "$user";
-			?>
-			</li>
+        <ul class="nav navbar-nav">
+			<li class="dropdown user user-menu">
+				<a class="dropdown-toggle" data-toggle="dropdown">
+					<img src="" class="user-image" alt="User Image">
+					<span class="hidden-xs"><?php echo $_SESSION[APPNAME]['FullName']; ?></span>
+				</a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+				<li class="user-header">
+					<img src="" class="img-circle" alt="User Image">
+					<p>
+						<?php echo $_SESSION[APPNAME]['FullName']; ?>
+					</p>
+				</li>
+
+            </ul>
+          </li>
 			<li><a data-toggle="control-sidebar"><i class="fa fa-calculator"></i> <span>Multi-Function Calculator</span></a></li>
 			<li><a href="php/LoggingOut.php">Log-Out</a></li>
 		</ul>
