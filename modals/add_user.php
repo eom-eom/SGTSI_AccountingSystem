@@ -1,7 +1,18 @@
-<div class="modal fade" id='modal_createjournal'>
+<?php
+  require_once('support/config.php');
+  $data=$connection->myQuery("SELECT
+              user_id,
+              full_name,
+              username,
+              user_type
+            FROM users
+            ");
+?>
+
+<div class="modal fade" id='modal_adduser'>
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
-        <form method="POST" action=''>
+        <form method="POST" action='users.php'>
           <div class="modal-header" style="background-color:#3c8dbc;">
             <h4 class="modal-title" style="color:#fff;"> <strong> Add User </strong> </h4>
           </div>
@@ -13,6 +24,10 @@
           <input type="text" class="form-control" required>
         Username
           <input type="text" class="form-control" required>
+        Password
+          <input type="text" class="form-control" required>
+<!--         Confirm Password
+          <input type="text" class="form-control" required> -->
         User Type
           <br>
           <select required class="form-control">
@@ -34,7 +49,7 @@
   
   <script type="text/javascript">
     function addUser(){
-            $('#modal_createjournal').modal('show');	
+            $('#modal_adduser').modal('show');	
         }
   </script>
  
