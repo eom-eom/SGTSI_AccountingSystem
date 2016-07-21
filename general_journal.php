@@ -15,7 +15,7 @@
 		<div class="box-body">
 				<input type="text" class="container-fluid" size="30" name="search" placeholder="Search">
 				<button type="submit" class="btn btn-primary" id="btn-search" name="btnsearch"><i class="fa fa-search"></i> </button>
-				<button type="submit" class="btn btn-primary" id="btn-add" onclick='createJournal();' name="btnadd"><i class="fa fa-plus"> Add General Journal</i></button>
+				<button type="submit" class="btn btn-primary" id="btn-add" onclick='createJournal();' name="btnadd" style="float:right;"><i class="fa fa-plus"> Add General Journal</i></button>
 		</div>
 	<div class="box-body">
 		<table id="table" class="table responsive-table table-bordered table-striped">

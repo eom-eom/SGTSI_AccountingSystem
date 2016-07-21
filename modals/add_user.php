@@ -7,13 +7,13 @@
           </div>
           <div class="modal-body" >
             <div class='form-group'>
-				USER ID
+				User ID
 					<input type="text" class="form-control" required>
-        FULL NAME
+        Full Name
           <input type="text" class="form-control" required>
-        USERNAME
+        Username
           <input type="text" class="form-control" required>
-        USER TYPE
+        User Type
           <br>
           <select required class="form-control">
             <option> </option>
