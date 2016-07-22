@@ -11,7 +11,7 @@
             <div class='form-group'>
 				DATE OF JOURNAL
 				<div class="input-group date" data-provide="datepicker">
-					<input type="text" class="form-control" required>
+					<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" required>
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-th"></span>
 					</div>
