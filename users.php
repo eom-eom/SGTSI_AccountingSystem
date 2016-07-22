@@ -1,8 +1,13 @@
 <?php
 	require_once('support/config.php');
-	addHead('Users');
-	addNavBar();
-	addSideBar();
+	if(loggedId()){
+		addHead('Users');
+		addNavBar();
+		addSideBar();
+	}else{
+		redirect('index.php');
+		setAlert('Please log in to continue','danger');
+	}
 
 	$data=$connection->myQuery("SELECT
  							user_id,
