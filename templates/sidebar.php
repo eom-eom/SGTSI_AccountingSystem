@@ -74,7 +74,7 @@
 					<span>Settings</span>
 				</a>
 					<ul class='treeview-menu menu-open'>
-						<li><a href='#'>
+						<li><a href='users.php'>
 							<i class='fa fa-users'></i>
 							<span>Users</span>
 							</a>

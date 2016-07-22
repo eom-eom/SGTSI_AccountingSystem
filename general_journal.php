@@ -1,8 +1,13 @@
 <?php
 	require_once('support/config.php');
-	addHead('General Joural');
-	addNavBar();
-	addSideBar();
+	if(loggedId()){
+		addHead('General Journal');
+		addNavBar();
+		addSideBar();
+	}else{
+		redirect('index.php');
+		setAlert('Please log in to continue','danger');
+	}s
 ?>
 
 <div class="content-wrapper">

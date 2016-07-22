@@ -6,12 +6,12 @@
 	
 		<div class="modal-content">
 		
-			<div class="modal-header">
+			<div class="modal-header" style="background-color:#3c8dbc;" >
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span></button>
-					<h3 class="modal-title">New Journal Entry</h3>
+					<h3 class="modal-title" style="color:#fff;">New Journal Entry</h3>
 					
-				<div class="col-lg-6">
+				<div class="col-lg-6" style="color:#fff;">
 					Journal Entry No: <?php $table=$connection->myQuery("SELECT journal_entry_no from journal_entries where journal_id = $journal_no ORDER by journal_entry_no DESC Limit 1")->fetch(PDO::FETCH_ASSOC);
 					 echo $table['journal_entry_no']+1;?>
 				</div>
