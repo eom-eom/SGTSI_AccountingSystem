@@ -11,9 +11,23 @@
 					<span aria-hidden="true">×</span></button>
 					<h3 class="modal-title">New Journal Entry</h3>
 					
+					
 				<div class="col-lg-6">
-					Journal Entry No: <?php $table=$connection->myQuery("SELECT journal_entry_no from journal_entries where journal_id = 0 ORDER by journal_entry_no DESC Limit 1")->fetch(PDO::FETCH_ASSOC);
-					 echo $table['journal_entry_no']+1;?>
+					Journal Entry No: <?php 
+						
+						$JournalNumber = ''; 
+								if( isset( $_GET['id'])) {
+										$JournalNumber = $_GET['id']; 
+									} 				
+						$JournalYear=$connection->myQuery("SELECT EXTRACT(YEAR FROM journal_date) AS JournalYear FROM journals WHERE journal_entries.journal_id=$JournalNumber")->fetch(PDO::FETCH_ASSOC);
+						$JournalMonth=$connection->myQuery("SELECT EXTRACT(MONTH FROM journal_date) AS JournalMonth FROM journals  WHERE journal_entries.journal_id=$JournalNumber ")->fetch(PDO::FETCH_ASSOC);
+
+											$JournalYear = implode( " ",$JournalYear);
+											$JournalMonth = implode(" ",$JournalMonth);
+											$JournalMonth= sprintf("%02s", $JournalMonth);		
+											
+											echo  substr($JournalYear,2).$JournalMonth.$JournalNumber; ?>
+	
 				</div>
 				<div class="input-group date" data-provide="datepicker">
 					<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" required>
