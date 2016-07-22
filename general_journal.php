@@ -29,14 +29,26 @@
 			</thead>
 			<tbody>
 				<!-- <tr class="tableheader"> -->
-					<td> 1 </td>
-					<td> June 2016</td>	
-					<td> Journal for the month of June</td>
-					<td> 
-						<button type="submit" class="btn btn-primary " id="btn-view" name="btnview"><i class="fa fa-eye"> </i></button> 
-						<button type="submit" class="btn btn-primary " id="btn-edit" name="btnedit"><i class="fa fa-edit"> </i></button>
-						<button type="submit" class="btn btn-primary " id="btn-archive" name="btnarchive"><i class="fa fa-file-archive-o"> </i></button>
-					</td>
+<?php
+			$journaltable =$connection -> myQuery("SELECT * FROM journals;");
+			
+				while($result = $journaltable->fetch(PDO::FETCH_ASSOC)){
+					$id= $result['journal_id'];
+					$journal_date = $result['journal_date'];
+					$description = $result['description'];
+?>
+					<tr>
+						<td><?php echo "$id ";?></td>
+						<td><?php echo "$journal_date ";?></td>
+						<td><?php echo "$description ";?></td>
+						<td> 
+							<button type="submit" class="btn btn-primary " id="btn-view" onclick="redirect(0);" name="btnview"><i class="fa fa-eye"> </i></button> 
+							<button type="submit" class="btn btn-primary " id="btn-edit" name="btnedit"><i class="fa fa-edit"> </i></button>
+							<button type="submit" class="btn btn-primary " id="btn-archive" name="btnarchive"><i class="fa fa-file-archive-o"> </i></button>
+						</td>
+								</tr><?php }; ?>
+
+					
 			</tbody>
 		</table>
 	</div>
@@ -44,11 +56,19 @@
 	</div>
 </section>
 
-
-
-  
-  
+ 
 </div>
+
+<script type="text/javascript">
+
+	function redirect(id){
+	
+		//window.location ="/journal_entry.php?id=" + id;
+		var href = window.location.href;
+		var string = href.substr(0,href.lastIndexOf('/'))+"/journal_entry.php?id=" + id;
+		window.location=string;
+	}
+</script>
 
 
 
