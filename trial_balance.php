@@ -1,15 +1,15 @@
 <?php
 	require_once('support/config.php');
 	if(loggedId()){
-		addHead('Dashboard');
+		addHead('Trial Balance');
 		addNavBar();
 		addSideBar();
 	}else{
 		redirect('index.php');
 		setAlert('Please log in to continue','danger');
 	}
-	
 ?>
+
 
 
 <div class="content-wrapper">
@@ -17,56 +17,41 @@
 	<div class="box">
             <div class="box-header">
               <center><h3 class="box-title">Trial Balance</h3></center>
-			  <center><h5 class="box-title"><?php ?></h5></center>
-            </div>
+			  <center><h5 class="box-title"><?php  ?></h5></center>
+				<!-- Split button -->	
+				<div class="btn-group">
+					<button type="button" class="btn btn-flat btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-calendar"></i><span> Select Month</span>
+					<i class="glyphicon glyphicon-chevron-down"></i></button>
+					<ul class="dropdown-menu">
+						<li class="dropdown-item"><a  href="#">Month 1</a></li>
+						<li class="dropdown-item"><a  href="#">Month 2</a></li>
+						<li class="dropdown-item"><a  href="#">Month 3</a></li>
+					</ul>
+				</div>
+				
             <!-- /.box-header -->
             <div class="box-body no-padding">
               <table class="table table-striped">
                 <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Task</th>
-                  <th>Progress</th>
-                  <th style="width: 40px">Label</th>
+                  <th>Account Title</th>
+                  <th>Debit</th>
+                  <th>Credit</th>
                 </tr>
                 <tr>
-                  <td>1.</td>
-                  <td>Update software</td>
-                  <td>
-                    <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-red">55%</span></td>
-                </tr>
-                <tr>
-                  <td>2.</td>
                   <td>Clean database</td>
-                  <td>
-                    <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-yellow">70%</span></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>3.</td>
                   <td>Cron job running</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-light-blue">30%</span></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>4.</td>
                   <td>Fix and squish bugs</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-green">90%</span></td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </tbody></table>
             </div>

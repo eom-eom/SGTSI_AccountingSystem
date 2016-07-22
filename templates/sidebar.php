@@ -17,17 +17,18 @@
 				<span>General Journal</span>
 			</a>
 			<ul class="treeview-menu menu-open">
-					<li><a href="#">
+					<li><a href="general_journal.php">
 						<i class="fa fa-file-text-o"></i>
 						<span>View General Journal</span>
 						</a>
 					</li>
-					<li><a href="#">
+					<li><a href="journal_entry.php">
 						<i class="fa fa-file-text-o"></i>
 						<span>New Journal Entry</span>
 						</a>
 					</li>
 			</ul>
+		</li>
 		<li class="treeview">
 			<a href="#">
 				<i class="glyphicon glyphicon-book"></i> 
@@ -50,7 +51,8 @@
 						</a>
 					</li>
 			</ul>
-      <li class="treeview">
+		</li>
+		<li class="treeview">
 			<a href="#">
 				<i class="glyphicon glyphicon-stats"></i>
 				<span>Financial Statement</span>
@@ -72,21 +74,20 @@
 						</a>
 					</li>
 			</ul>
-      </li>
+		</li>
 	  
-	  
-	  <!-- USER VALIDATION -->
+
 	  <?php
 	  
-	  if($_SESSION[APPNAME]['UserType'] == "admin"){
-		echo "<li class='treeview'>
+	  if($_SESSION[APPNAME]['UserType']== "admin" ){
+			echo" <li class='treeview'>
 				<a href='#'>
 					<i class='fa fa-gear'></i>
 					<span>Settings</span>
 				</a>
 					<ul class='treeview-menu menu-open'>
 						<li><a href='#'>
-							<i class='fa  fa-users'></i>
+							<i class='fa fa-users'></i>
 							<span>Users</span>
 							</a>
 						</li>
@@ -106,9 +107,9 @@
 							</a>
 						</li>
 					</ul>
-				</li>";}
-	  else {
-		echo "<li class='treeview'>
+				</li>";}	
+			else{
+				echo"<li class='treeview'>
 				<a href='#'>
 					<i class='fa fa-gear'></i>
 					<span>Settings</span>
@@ -125,8 +126,9 @@
 							</a>
 						</li>
 					</ul>
-				</li>";} 
+				</li>";}
 		?>
-    </ul><!-- /.sidebar-menu -->
+		
+	</ul><!-- /.sidebar-menu -->
   </div>
 </div><!-- /.main-sidebar -->

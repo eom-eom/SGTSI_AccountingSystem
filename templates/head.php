@@ -12,6 +12,8 @@
 		<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 		<link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
 		<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"/>
+		<link rel="stylesheet" href="plugins/select2/select2.min.css"/>
 	</head>
 	
 <body class="skin-blue sidebar-mini sidebar-collapse fixed">
