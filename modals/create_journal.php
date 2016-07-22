@@ -1,3 +1,4 @@
+<style>.datepicker{z-index:1200 !important;}</style>
 
 <div class="modal fade" id='modal_createjournal'>
     <div class="modal-dialog">
@@ -11,9 +12,9 @@
             <div class='form-group'>
 				DATE OF JOURNAL
 				<div class="input-group date" data-provide="datepicker">
-					<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" required>
+					<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" style="position: relative; z-index: 100000;" required>
 					<div class="input-group-addon">
-						<span class="glyphicon glyphicon-th"></span>
+						<span class="glyphicon glyphicon-calendar"></span>
 					</div>
 				</div>
 				DESCRIPTION

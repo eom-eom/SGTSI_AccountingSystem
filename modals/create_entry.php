@@ -1,5 +1,5 @@
 
-
+<style>.datepicker{z-index:1200 !important;}</style>
 
 <div class="modal fade" id='modal_createentry'>
 	<div class="modal-dialog">
@@ -12,10 +12,11 @@
 					<h3 class="modal-title">New Journal Entry</h3>
 					
 				<div class="col-lg-6">
-					Journal Entry No: <?php ?>
+					Journal Entry No: <?php $table=$connection->myQuery("SELECT journal_entry_no from journal_entries where journal_id = 0 ORDER by journal_entry_no DESC Limit 1")->fetch(PDO::FETCH_ASSOC);
+					 echo $table['journal_entry_no']+1;?>
 				</div>
-				<div class="col-lg-6 input-group date" data-provide="datepicker">
-					<input type="text" class="form-control" required>
+				<div class="input-group date" data-provide="datepicker">
+					<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" required>
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</div>
@@ -25,13 +26,18 @@
 			
 			
 			<div class="form-group col-lg-6" onload="makeDTableFix();">
-					
+						<label>Debit</label>		
 						<label>Accounts:</label>					
 						<select class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-live-search="true" style="width: 100%;">
 							<!-- Insert Options -->
 						</select>
 						<label> Amount: </label>	
-						<input class="form-control input-sm" placeholder="Amount" type="text">
+						<div class="input-group margin">
+							<input type="text" class="form-control" placeholder="Amount">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-primary btn-flat">Add Credit</button>
+						</span>
+						</div>
 			
 
 					<table class="table table-striped" id="DebitTable">
@@ -55,14 +61,19 @@
 				</div>
 			
 				<div class="form-group col-lg-6" onload="makeCTableFix();">
+					<label>Credit</label>	
 					<label>Accounts:</label>
-					
 						<select class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-live-search="true" style="width: 100%;">
 						<!-- Insert Options -->
 						</select>
-					<label> Amount: </label>	
-					<input class="form-control input-sm" placeholder="Amount" type="text">
-			
+					<div ><label > Amount: </label>	
+						<div class="input-group margin">
+							<input type="text" class="form-control"  placeholder="Amount">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-primary btn-flat">Add Credit</button>
+						</span>
+					</div>
+					</div>
 					<table class="table table-striped" id="CreditTable">
 						<thead id="tblHead">
 						<tr>
