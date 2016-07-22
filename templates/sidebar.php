@@ -12,22 +12,10 @@
 			</a>
 		</li>
 		<li class="treeview">
-			<a href="#">
+			<a href="general_journal.php">
 				<i class="glyphicon glyphicon-list-alt"></i> 
 				<span>General Journal</span>
 			</a>
-			<ul class="treeview-menu menu-open">
-					<li><a href="general_journal.php">
-						<i class="fa fa-file-text-o"></i>
-						<span>View General Journal</span>
-						</a>
-					</li>
-					<li><a href="journal_entry.php">
-						<i class="fa fa-file-text-o"></i>
-						<span>New Journal Entry</span>
-						</a>
-					</li>
-			</ul>
 		</li>
 		<li class="treeview">
 			<a href="#">

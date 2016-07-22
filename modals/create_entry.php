@@ -12,7 +12,7 @@
 					<h3 class="modal-title">New Journal Entry</h3>
 					
 				<div class="col-lg-6">
-					Journal Entry No: <?php $table=$connection->myQuery("SELECT journal_entry_no from journal_entries where journal_id = 0 ORDER by journal_entry_no DESC Limit 1")->fetch(PDO::FETCH_ASSOC);
+					Journal Entry No: <?php $table=$connection->myQuery("SELECT journal_entry_no from journal_entries where journal_id = $journal_no ORDER by journal_entry_no DESC Limit 1")->fetch(PDO::FETCH_ASSOC);
 					 echo $table['journal_entry_no']+1;?>
 				</div>
 				<div class="input-group date" data-provide="datepicker">

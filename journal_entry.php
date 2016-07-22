@@ -12,9 +12,7 @@
 ?>
 <button></button>
 <div class="content-wrapper">
-	<?php
-		include_once('modals/create_entry.php');
-	?>
+	
 	<div class="box">
 		<div class="box-body">
 				<input type="text" class="container-fluid" size="30" name="search" placeholder="Search">
@@ -136,7 +134,9 @@
 
 </div>
 	
-
+<?php
+		include_once('modals/create_entry.php');
+	?>
 
 
 
