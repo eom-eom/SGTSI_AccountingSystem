@@ -9,13 +9,7 @@
 		setAlert('Please log in to continue','danger');
 	}
 
-	$data=$connection->myQuery("SELECT
- 							user_id,
- 							full_name,
- 							username,
- 							user_type
-                        FROM users
-                        ");
+	
  ?>
 
 <div class="content-wrapper">
@@ -41,7 +35,13 @@
 		</thead>
 		<tbody>
             <?php
-                while($row = $data->fetch(PDO::FETCH_ASSOC)):
+			$data=$connection->myQuery("SELECT
+ 							*
+                        FROM users
+                        ");
+                while($row = $data->fetch(PDO::FETCH_ASSOC)){
+					if($row["is_deleted"]==1)
+					{}else{
             ?>
             <tr>
 	            <td><?php echo htmlspecialchars($row['user_id'])?></td>
@@ -50,11 +50,12 @@
 	            <td><?php echo htmlspecialchars($row['user_type'])?></td>
 	            <td class='text-center'>
 	            <a href='user_update.php?id=<?php echo $row['user_id']; ?>' class='btn btn-success btn-sm'><span class='fa fa-pencil'></span></a>
-	            <a href='user_delete.php?id=<?php echo $row['user_id']; ?>&t=prod' onclick="return confirm('This record will be deleted.')" class='btn btn-danger btn-sm'><span class='fa fa-trash'></span></a>
+	            <a href='php/deleteuser.php?id=<?php echo $row['user_id']; ?>' onclick="return confirm('This record will be deleted.')" class='btn btn-danger btn-sm'><span class='fa fa-trash'></span></a>
 	            </td>
             </tr>
             <?php
-                endwhile;
+				}
+			}
             ?>
 	</div>
 	</div>	

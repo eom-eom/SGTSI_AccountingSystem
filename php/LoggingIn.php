@@ -9,23 +9,39 @@
 		
 		
 		if($query['is_deleted']==0){
-			if($query['is_logged_in']==0){
-				if(decryptIt($query['password'])==decryptIt($password)){
+			if(!isset($_SESSION['User_Id'])){
+				if($query['is_logged_in']==0){
+					if(decryptIt($query['password'])==decryptIt($password)){
 					//echo 'log in good';
-					$_SESSION[APPNAME]['UserName']=$query['username'];
-					$_SESSION[APPNAME]['FullName']=$query['full_name'];
-					$_SESSION[APPNAME]['UserType']=$query['user_type'];
-					$userId = $query['user_id'];
-					$_SESSION[APPNAME]['UserId'] = $userId;
-					$connection->myQuery("UPDATE `users` SET `is_logged_in` = '1' where user_id='$userId'");
-					redirect('../dash.php');
+						$_SESSION[APPNAME]['UserName']=$query['username'];
+						$_SESSION[APPNAME]['FullName']=$query['full_name'];
+						$_SESSION[APPNAME]['UserType']=$query['user_type'];
+						$userId = $query['user_id'];
+						$_SESSION[APPNAME]['UserId'] = $userId;
+						$connection->myQuery("UPDATE `users` SET `is_logged_in` = '1' where user_id='$userId'");
+						redirect('../dash.php');
+					}else{
+						setAlert('Wrong Username /Password','danger');
+						redirect('../index.php');
+					}
 				}else{
-					setAlert('Wrong Username /Password','danger');
+					setAlert('User is logged in on another pc','danger');
 					redirect('../index.php');
 				}
 			}else{
-				setAlert('User is deleted','danger');
-				redirect('../index.php');
+				if(decryptIt($query['password'])==decryptIt($password)){
+					//echo 'log in good';
+						$_SESSION[APPNAME]['UserName']=$query['username'];
+						$_SESSION[APPNAME]['FullName']=$query['full_name'];
+						$_SESSION[APPNAME]['UserType']=$query['user_type'];
+						$userId = $query['user_id'];
+						$_SESSION[APPNAME]['UserId'] = $userId;
+						$connection->myQuery("UPDATE `users` SET `is_logged_in` = '1' where user_id='$userId'");
+						redirect('../dash.php');
+					}else{
+						setAlert('Wrong Username /Password','danger');
+						redirect('../index.php');
+					}
 			}
 		}
 		
