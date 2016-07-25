@@ -18,6 +18,10 @@
 	?>
 <section class="content-header">
 	<h2> Users </h2>
+	<?php
+		Alert();
+		unsetAlert();
+	?>
 	<div class="box">
 	<div class="box-body">
 	    <button type="submit" class="btn btn-primary" style="float:right;" id="btnadd" name="btnadd" onclick="addUser()"><i class="fa fa-plus"></i> User</button>

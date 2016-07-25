@@ -12,11 +12,26 @@
 			</a>
 		</li>
 		<li class="treeview">
-			<a href="general_journal.php">
+				<a>
 				<i class="glyphicon glyphicon-list-alt"></i> 
 				<span>General Journal</span>
-			</a>
+				</a>
+			<ul class="treeview-menu menu-open">
+					<li><a href="general_journal.php">
+						<i class="glyphicon glyphicon-list-alt"></i>
+						<span>View General Journal</span>
+						</a>
+					</li>
+					<li><a href="archived_journals.php">
+						<i class="glyphicon glyphicon-list-alt"></i>
+						<span>Archived Journals</span>
+						</a>
+					</li>
+					
+			</ul>
 		</li>
+		
+		
 		<li class="treeview">
 			<a href="#">
 				<i class="glyphicon glyphicon-book"></i> 
@@ -33,11 +48,7 @@
 						<span>Trial Balance</span>
 						</a>
 					</li>
-					<li><a href="#">
-						<i class="fa fa-file-text"></i>
-						<span>Archived Ledger</span>
-						</a>
-					</li>
+					
 			</ul>
 		</li>
 		<li class="treeview">

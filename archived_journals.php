@@ -1,7 +1,7 @@
 <?php
 	require_once('support/config.php');
 	if(loggedId()){
-		addHead('General Journal');
+		addHead('Archived Journals');
 		addNavBar();
 		addSideBar();
 	}else{
@@ -12,15 +12,15 @@
 
 <div class="content-wrapper">
 	<?php
-		include_once('modals/create_journal.php');
+		
 	?>
 <section class="content-header">
-	<h2> General Journal </h2>
+	<h2> Archived Journals </h2>
 	<div class="box">
 		<div class="box-body">
 				<input type="text" class="container-fluid" size="30" name="search" placeholder="Search">
 				<button type="submit" class="btn btn-primary" id="btn-search" name="btnsearch"><i class="fa fa-search"></i> </button>
-				<button type="submit" class="btn btn-primary" id="btn-add" onclick='createJournal();' name="btnadd" style="float:right;"><i class="fa fa-plus"> Add General Journal</i></button>
+				
 		</div>
 	<div class="box-body">
 		<table id="table" class="table responsive-table table-bordered table-striped">
@@ -38,7 +38,7 @@
 			$journaltable =$connection -> myQuery("SELECT * FROM journals;");
 			
 				while($result = $journaltable->fetch(PDO::FETCH_ASSOC)){
-					if($result['is_archived']==0){
+					if($result['is_archived']==1){
 					$id= $result['journal_id'];
 					$journal_date = $result['journal_date'];
 					$description = $result['description'];
@@ -70,17 +70,16 @@
 
 	function redirect(id){
 	
-		//window.location ="/journal_entry.php?id=" + id;
+		
 		var href = window.location.href;
 		var string = href.substr(0,href.lastIndexOf('/'))+"/journal_entry.php?id=" + id;
 		window.location=string;
-	};
+	}
 	
 	function archive(id){
-	
-		//window.location ="/journal_entry.php?id=" + id;
+		
 		var href = window.location.href;
-		var string = href.substr(0,href.lastIndexOf('/'))+"/php/archive.php?id=" + id;
+		var string = href.substr(0,href.lastIndexOf('/'))+"/php/unarchive.php?id=" + id;
 		window.location=string;
 	}
 	
