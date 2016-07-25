@@ -6,13 +6,13 @@
 	
 		<div class="modal-content">
 		
-			<div class="modal-header">
+			<div class="modal-header" style="background-color:#3c8dbc;">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span></button>
-					<h3 class="modal-title">New Journal Entry</h3>
+					<h3 class="modal-title" style="color:#fff;">New Journal Entry</h3>
 					
 					
-				<div class="col-lg-6">
+				<div class="col-lg-6" style="color:#fff;">
 					Journal Entry No:
 					
 					 <?php 
@@ -50,14 +50,22 @@
 			<div class="form-group col-lg-6" onload="makeDTableFix();">
 						<label>Debit</label>		
 						<label>Accounts:</label>					
-						<select class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-live-search="true" style="width: 100%;">
+						<select class="form-control">
 							<!-- Insert Options -->
+							<?php
+								$accounttable =$connection -> myQuery("SELECT name FROM accounts;");
+			
+									while($result = $accounttable->fetch(PDO::FETCH_ASSOC)){
+									$DebitTitle= $result['name'];
+		
+						?>
+									<option value="$DebitTitle"><?php echo "$DebitTitle"; }; ?></option>
 						</select>
 						<label> Amount: </label>	
 						<div class="input-group margin">
 							<input type="text" class="form-control" placeholder="Amount">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-primary btn-flat">Add Credit</button>
+							<button type="button" class="btn btn-primary btn-flat">Add Debit</button>
 						</span>
 						</div>
 			
@@ -85,8 +93,16 @@
 				<div class="form-group col-lg-6" onload="makeCTableFix();">
 					<label>Credit</label>	
 					<label>Accounts:</label>
-						<select class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-live-search="true" style="width: 100%;">
+						<select class="form-control">
 						<!-- Insert Options -->
+						<?php
+								$accounttable =$connection -> myQuery("SELECT name FROM accounts;");
+			
+									while($result = $accounttable->fetch(PDO::FETCH_ASSOC)){
+									$CreditTitle= $result['name'];
+		
+						?>
+									<option value="$CreditTitle"><?php echo "$CreditTitle"; }; ?></option>
 						</select>
 					<div ><label > Amount: </label>	
 						<div class="input-group margin">
