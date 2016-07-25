@@ -49,7 +49,7 @@
 	            <td><?php echo htmlspecialchars($row['username'])?></td>
 	            <td><?php echo htmlspecialchars($row['user_type'])?></td>
 	            <td class='text-center'>
-	            <a href='user_update.php?id=<?php echo $row['user_id']; ?>' class='btn btn-success btn-sm'><span class='fa fa-pencil'></span></a>
+	            <a href='edit_userform.php?id=<?php echo $row['user_id']; ?>' class='btn btn-success btn-sm'><span class='fa fa-pencil'></span></a>
 	            <a href='php/deleteuser.php?id=<?php echo $row['user_id']; ?>' onclick="return confirm('This record will be deleted.')" class='btn btn-danger btn-sm'><span class='fa fa-trash'></span></a>
 	            </td>
             </tr>
