@@ -13,22 +13,30 @@
 					
 					
 				<div class="col-lg-6">
-					Journal Entry No: <?php 
+					Journal Entry No:
+					
+					 <?php 
 						
-						$JournalNumber = ''; 
+						$JournalNumber = ""; 
 								if( isset( $_GET['id'])) {
 										$JournalNumber = $_GET['id']; 
 									} 				
-						$JournalYear=$connection->myQuery("SELECT EXTRACT(YEAR FROM journal_date) AS JournalYear FROM journals WHERE journal_entries.journal_id=$JournalNumber")->fetch(PDO::FETCH_ASSOC);
-						$JournalMonth=$connection->myQuery("SELECT EXTRACT(MONTH FROM journal_date) AS JournalMonth FROM journals  WHERE journal_entries.journal_id=$JournalNumber ")->fetch(PDO::FETCH_ASSOC);
-
+									
+						$JournalYear=$connection->myQuery("SELECT EXTRACT(YEAR FROM journal_date) AS JournalYear FROM journals WHERE journal_id=$JournalNumber ORDER BY journal_id DESC LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+						$JournalMonth=$connection->myQuery("SELECT EXTRACT(MONTH FROM journal_date) AS JournalMonth FROM journals WHERE journal_id=$JournalNumber ORDER BY journal_id DESC LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+						$JournalEntryCount=$connection->myQuery("SELECT COUNT(*) AS JournalEntryCount FROM journal_entries WHERE journal_id = $JournalNumber")->fetch(PDO::FETCH_ASSOC);
+						
 											$JournalYear = implode( " ",$JournalYear);
 											$JournalMonth = implode(" ",$JournalMonth);
-											$JournalMonth= sprintf("%02s", $JournalMonth);		
+											$JournalMonth= sprintf("%02s", $JournalMonth);	
+											$JournalEntryCount = implode( " ",$JournalEntryCount);
 											
-											echo  substr($JournalYear,2).$JournalMonth.$JournalNumber; ?>
+											echo  substr($JournalYear,2).$JournalMonth.'-'.($JournalEntryCount+1); 
+											
+						?>
 	
 				</div>
+	
 				<div class="input-group date" data-provide="datepicker">
 					<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" required>
 					<div class="input-group-addon">
