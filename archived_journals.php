@@ -49,7 +49,7 @@
 						<td><?php echo "$description ";?></td>
 						<td> 
 							<button type="submit" class="btn btn-primary " id="btn-view" onclick="redirect(<?php echo "$id";?>);" name="btnview"><i class="fa fa-eye"> </i></button> 
-							<button type="submit" class="btn btn-primary " id="btn-edit" name="btnedit"><i class="fa fa-edit"> </i></button>
+							
 							<button type="submit" class="btn btn-primary " id="btn-archive" name="btnarchive" onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
 						</td>
 				</tr><?php }

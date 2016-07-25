@@ -18,7 +18,7 @@
 					</div>
 				</div>
 				DESCRIPTION
-				 <textarea name='desc' required="" placeholder="Enter Journal Description" class='form-control' style='resize: none' rows='4'></textarea>
+				 <textarea name='desc' required="" maxlength="100" placeholder="Enter Journal Description (100 chars)" class='form-control' style='resize: none' rows='4'></textarea>
 				
             </div>
           </div>
