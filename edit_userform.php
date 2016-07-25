@@ -25,6 +25,10 @@
             <div class="row">
                 <div class="col-lg-12" align='center'>
                     <h1 class="page-header">User Types</h1>
+					<?php
+						Alert();
+						unsetAlert();
+					?>
                 </div>
 
                 <!-- /.col-lg-12 -->;
@@ -35,7 +39,7 @@
                     <div class='row'>
                     	<div class='col-sm-12 col-md-8 col-md-offset-2'>
                     		<form class='form-horizontal' method='POST' enctype="multipart/form-data" action='php/edit_user.php'>
-                                <input type='hidden' name='id' value=''>
+                                <input type='hidden' name='id' value=<?php echo $userid?> >
                     			
                                 <div class='form-group' align='left'>
                                     <label class='col-sm-12 col-md-3 control-label'>UserName</label>
@@ -61,7 +65,7 @@
 									<div class='col-sm-12 col-md-6'>
 										<select class="form-control" name='account' required>
 											<option> </option>
-											<option value="Administrator"> Administrator </option>
+											<option value="admin"> Administrator </option>
 											<option value="Accountant"> Accountant </option>
 										</select>
 									</div>
@@ -70,7 +74,7 @@
                                 <div class='form-group' align='left'>
                                     <div class='col-sm-12 col-md-9 col-md-offset-3 '>
                                         <button type='submit' class='btn btn-success'> <span class='fa fa-check'></span> Save</button>
-                                        <a href='settings.php' class='btn btn-default'>Cancel</a>
+                                        <a href='users.php' class='btn btn-default'>Cancel</a>
                                     </div>
                                     
                                 </div>                    		
