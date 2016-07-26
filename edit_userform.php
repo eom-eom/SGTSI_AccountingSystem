@@ -24,7 +24,7 @@
 	<div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12" align='center'>
-                    <h1 class="page-header">User Types</h1>
+                    <h1 class="page-header">Edit User</h1>
 					<?php
 						Alert();
 						unsetAlert();

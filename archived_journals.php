@@ -16,6 +16,10 @@
 	?>
 <section class="content-header">
 	<h2> Archived Journals </h2>
+<?php
+		Alert();
+		unsetAlert();
+	?>
 	<div class="box">
 		<div class="box-body">
 				<input type="text" class="container-fluid" size="30" name="search" placeholder="Search">

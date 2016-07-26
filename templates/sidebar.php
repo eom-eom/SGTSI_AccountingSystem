@@ -90,9 +90,15 @@
 							<span>Users</span>
 							</a>
 						</li>
-						<li><a href='#'>
+							<li><a href='chart_of_accounts.php'>
 							<i class='fa fa-folder'></i>
 							<span>Chart of Accounts</span>
+							</a>
+						</li>
+						
+						<li><a href='archived_accounts.php'>
+							<i class='fa fa-folder'></i>
+							<span>Archived Accounts</span>
 							</a>
 						</li>
 						<li><a href='#'>
@@ -114,9 +120,15 @@
 					<span>Settings</span>
 				</a>
 					<ul class='treeview-menu menu-open'>
-						<li><a href='#'>
+						<li><a href='chart_of_accounts.php'>
 							<i class='fa fa-folder'></i>
 							<span>Chart of Accounts</span>
+							</a>
+						</li>
+						
+						<li><a href='archived_accounts.php'>
+							<i class='fa fa-folder'></i>
+							<span>Archived Accounts</span>
 							</a>
 						</li>
 						<li><a href='#'>

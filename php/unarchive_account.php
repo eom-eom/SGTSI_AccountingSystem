@@ -1,11 +1,11 @@
 <?php
 	require_once('../support/config.php');
 	if(loggedId()&&isset($_GET['id'])){
-		$journal_id = $_GET['id'];
-		$query = $connection->myQuery("UPDATE `journals` SET `is_archived` = '0' WHERE `journals`.`journal_id` = $journal_id");
+		$id = $_GET['id'];
+		$query = $connection->myQuery("UPDATE `accounts` SET `is_deleted` = '0' WHERE `accounts`.`acc_id` = $id");
 		
 		setAlert('Restored','success');
-		redirect('../archived_journals.php');
+		redirect('../archived_accounts.php');
 		
 		
 	}else{

@@ -2,8 +2,8 @@
 	require_once('../support/config.php');
 	if(isset($_POST['username'])&&isset($_POST['password'])&&isset($_POST['name'])&&isset($_POST['account'])&&isset($_POST['id'])){
 		$username=$_POST['username'];
-		$rowcount= $connection->myQuery("SELECT * FROM users where username = '$username'")->rowcount();
 		$users_id=$_POST['id'];
+		$rowcount= $connection->myQuery("SELECT * FROM users where username = '$username' AND user_id != $users_id")->rowcount();
 		echo $rowcount;
 		
 		if($rowcount>0){
