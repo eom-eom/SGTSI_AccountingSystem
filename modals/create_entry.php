@@ -37,7 +37,7 @@
 	
 				</div>
 	
-				<div class="input-group date" data-provide="datepicker">
+				<div class="input-group date input-group-sm" data-provide="datepicker">
 					<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" required>
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
@@ -45,133 +45,124 @@
 				</div>
             </div>
 			
+	<div class="modal-body" >
 			
-			
-			<div class="form-group col-lg-6" onload="makeDTableFix();">
+				<form class="col-lg-6" method="post">
+				<div class="form-group form-group-sm">
 						<label>Debit</label>		
 						<label>Accounts:</label>					
-						<select class="form-control">
+						<select class="form-control" id="selectdr">
 							<!-- Insert Options -->
 							<?php
-								$accounttable =$connection -> myQuery("SELECT name FROM accounts;");
+								$accounttable =$connection -> myQuery("SELECT name,acc_id FROM accounts;");
 			
 									while($result = $accounttable->fetch(PDO::FETCH_ASSOC)){
 									$DebitTitle= $result['name'];
+									$AcctID = $result['acc_id'];
 		
 						?>
-									<option value="$DebitTitle"><?php echo "$DebitTitle"; }; ?></option>
+									<option id = "<?php echo '$AcctID' ?>"  value="<?php echo "$DebitTitle"; ?>"><?php echo "$DebitTitle"; }; ?></option>
 						</select>
-						<label> Amount: </label>	
-						<div class="input-group margin">
-							<input type="text" class="form-control" placeholder="Amount">
+						
+						<div class="input-group margin input-group-sm">
+							<input type="text" class="form-control" placeholder="Amount" id = "AmountDr">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-primary btn-flat">Add Debit</button>
+							<button type="submit" class="btn btn-primary btn-flat " onclick="return Dr(this);">Add Debit</button>
+							<button type="reset" class="btn btn-danger btn-flat">Cancel</button>
 						</span>
 						</div>
 			
-
+			
+			
+			
+					<div style="overflow: auto; height: 180px;">
 					<table class="table table-striped" id="DebitTable">
 						<thead id="tblHead">
 							<tr>
 							<th>Accounts</th>
 							<th class="text-right">Amount</th>
+							<th class = "col-lg-2">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td>Cash</td>
-							<td class="text-right">45001</td>
-						</tr>
-						<tr>
-							<td>Office Equipment</td>
-							<td class="text-right">76455</td>
-						</tr>
 						</tbody>
 					</table>
-				</div>
+					</div>
+				</form>
+			</div>
+				
+				
+				
+				
+	
 			
-				<div class="form-group col-lg-6" onload="makeCTableFix();">
+				
+			<form class="col-lg-6" method="post">
+				<div class="form-group form-group-sm">
 					<label>Credit</label>	
 					<label>Accounts:</label>
-						<select class="form-control">
+						<select class="form-control" id="selectcr">
 						<!-- Insert Options -->
 						<?php
-								$accounttable =$connection -> myQuery("SELECT name FROM accounts;");
+								$accounttable =$connection -> myQuery("SELECT name,acc_id FROM accounts;");
 			
 									while($result = $accounttable->fetch(PDO::FETCH_ASSOC)){
 									$CreditTitle= $result['name'];
+									$AcctID = $result['acc_id'];
 		
 						?>
-									<option value="$CreditTitle"><?php echo "$CreditTitle"; }; ?></option>
+						
+						
+						
+									<option id = "<?php echo '$AcctID' ?>"  value="<?php echo "$CreditTitle"; ?>"><?php echo "$CreditTitle"; }; ?></option>
 						</select>
-					<div ><label > Amount: </label>	
-						<div class="input-group margin">
-							<input type="text" class="form-control"  placeholder="Amount">
+						
+						
+						
+						<div class="input-group margin input-group-sm">
+							<input type="text" class="form-control" placeholder="Amount" id = "AmountCr">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-primary btn-flat">Add Credit</button>
+							<button type="submit" class="btn btn-primary btn-flat " onclick="return Cr()">Add Credit</button>
+							<button type="reset" class="btn btn-danger btn-flat ">Cancel</button>
 						</span>
-					</div>
-					</div>
+						</div>
+					
+					
+					
+					<div style="overflow: auto; height: 180px;">
 					<table class="table table-striped" id="CreditTable">
 						<thead id="tblHead">
 						<tr>
 							<th>Accounts</th>
 							<th class="text-right">Amount</th>
+							<th class="col-lg-2">Action</th>							
 						</tr>
-							</thead>
+						</thead>
 							<tbody>
-							<tr>
-								<td>Accounts Payable</td>
-								<td class="text-right">45001</td>
-							</tr>
-							<tr>
-								<td>Mr. X, Drawing</td>
-								<td class="text-right">76455</td>
-							</tr>
-						</tbody>
+							</tbody>
 					</table>
-				</div>
-			
-			
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-default">Create Entry</button>				
+				</div>				
+		
 			</div>
+		</form>
+		
+			<div class="form-group">
+                  <label>Description:</label>
+                  <input class="form-control" placeholder="Description"></input>
+                </div>
+				
+
+</div>
+		
+		
+				<div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="clearTable()">Close</button>   
+					<button type="button" class="btn btn-primary">Save changes</button>
+			  </div>
 			
-		</div>		
 	</div>
 </div>
+</div>
+</form>
 
-  <script type="text/javascript">
-    function createEntry(){
-            $('#modal_createentry').modal('show');	
-        }
-	function makeDTableFix() {
-            // Constant retrieved from server-side via JSP
-            var maxRows = 4;
-			var table = document.getElementById('DebitTable');
-            var wrapper = table.parentNode;
-            var rowsInTable = table.rows.length;
-            var height = 0;
-            if (rowsInTable > maxRows) {
-                for (var i = 0; i < maxRows; i++) {
-                    height += table.rows[i].clientHeight;
-                }
-                wrapper.style.height = height + "px";
-            }
-		}
-	function makeCTableFix() {
-            // Constant retrieved from server-side via JSP
-            var maxRows = 4;
-			var table = document.getElementById('DebitTable');
-            var wrapper = table.parentNode;
-            var rowsInTable = table.rows.length;
-            var height = 0;
-            if (rowsInTable > maxRows) {
-                for (var i = 0; i < maxRows; i++) {
-                    height += table.rows[i].clientHeight;
-                }
-                wrapper.style.height = height + "px";
-            }
-		}
-  </script>
+ <script type="text/javascript" src="js/CreateEntry_Functions.js"></script>
