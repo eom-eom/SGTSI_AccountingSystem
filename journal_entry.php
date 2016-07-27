@@ -55,7 +55,7 @@
 					journal_entries.journal_entry_no,
 					journal_entries.date_of_entry,
 					journal_details.account_id,
-                    accounts.name,
+                    accounts.account_name,
 					journal_details.amount,
 					journal_details.is_debit
 					
@@ -82,9 +82,9 @@
 				?>
 					<td><?php
 						if($isDebit==0){
-							echo "<p style='text-indent:10vh;'>".htmlspecialchars($row['name'])."</p>";
+							echo "<p style='text-indent:10vh;'>".htmlspecialchars($row['account_name'])."</p>";
 						}else{
-							echo htmlspecialchars($row['name']);
+							echo htmlspecialchars($row['account_name']);
 						}
 						?>
 					</td>
@@ -104,9 +104,9 @@
 					<td>
 						<?php
 						if($isDebit==0){
-							echo "<p style='text-indent:10vh;'>".htmlspecialchars($row['name'])."</p>";
+							echo "<p style='text-indent:10vh;'>".htmlspecialchars($row['account_name'])."</p>";
 						}else{
-							echo htmlspecialchars($row['name']);
+							echo htmlspecialchars($row['account_name']);
 						}
 						?>	
 					</td>
