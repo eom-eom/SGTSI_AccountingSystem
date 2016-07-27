@@ -4,7 +4,7 @@
 		$id = $_GET['id'];
 		$query = $connection->myQuery("UPDATE `accounts` SET `is_deleted` = '1' WHERE `accounts`.`acc_id` = $id");
 		
-		setAlert('Archived','danger');
+		setAlert('<strong>Archived</strong>','danger');
 		redirect('../chart_of_accounts.php');
 		
 		

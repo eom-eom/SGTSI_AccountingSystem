@@ -4,7 +4,7 @@
 		$id = $_GET['id'];
 		$query = $connection->myQuery("UPDATE `accounts` SET `is_deleted` = '0' WHERE `accounts`.`acc_id` = $id");
 		
-		setAlert('Restored','success');
+		setAlert('<strong>Restored</strong>','success');
 		redirect('../archived_accounts.php');
 		
 		

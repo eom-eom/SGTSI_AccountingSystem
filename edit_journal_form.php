@@ -66,8 +66,8 @@
 
                                 <div class='form-group' align='left'>
                                     <div class='col-sm-12 col-md-9 col-md-offset-3 '>
-                                        <button type='submit' class='btn btn-success'> <span class='fa fa-check'></span> Save</button>
-                                        <a href='users.php' class='btn btn-default'>Cancel</a>
+                                        <button type='submit' class='btn btn-success'> <span class='fa fa-check'></span>Save Changes</button>
+                                        <a href='general_journal.php' class='btn btn-default'>Back</a>
                                     </div>
                                     
                                 </div>                    		

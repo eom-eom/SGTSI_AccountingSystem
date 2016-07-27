@@ -4,7 +4,7 @@
 		$journal_id = $_GET['id'];
 		$query = $connection->myQuery("UPDATE `journals` SET `is_archived` = '0' WHERE `journals`.`journal_id` = $journal_id");
 		
-		setAlert('Restored','success');
+		setAlert('<strong>Restored</strong>','success');
 		redirect('../archived_journals.php');
 		
 		
