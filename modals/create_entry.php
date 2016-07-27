@@ -54,10 +54,10 @@
 						<select class="form-control" id="selectdr">
 							<!-- Insert Options -->
 							<?php
-								$accounttable =$connection -> myQuery("SELECT name,acc_id FROM accounts;");
+								$accounttable =$connection -> myQuery("SELECT account_name,acc_id FROM accounts;");
 			
 									while($result = $accounttable->fetch(PDO::FETCH_ASSOC)){
-									$DebitTitle= $result['name'];
+									$DebitTitle= $result['account_name'];
 									$AcctID = $result['acc_id'];
 		
 						?>
@@ -104,10 +104,10 @@
 						<select class="form-control" id="selectcr">
 						<!-- Insert Options -->
 						<?php
-								$accounttable =$connection -> myQuery("SELECT name,acc_id FROM accounts;");
+								$accounttable =$connection -> myQuery("SELECT account_name,acc_id FROM accounts;");
 			
 									while($result = $accounttable->fetch(PDO::FETCH_ASSOC)){
-									$CreditTitle= $result['name'];
+									$CreditTitle= $result['account_name'];
 									$AcctID = $result['acc_id'];
 		
 						?>
