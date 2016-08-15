@@ -37,6 +37,7 @@
 				<tr class="tableheader">
 					<th>ID</th>
 					<th>DATE OF JOURNAL</th>
+					<th>MONTH YEAR</th>
 					<th>DESCRIPTION</th>
 					<th>ACTION</th>
 				</tr>
@@ -55,11 +56,12 @@
 					<tr>
 						<td><?php echo "$id ";?></td>
 						<td><?php echo "$journal_date ";?></td>
+						<td><?php echo date("F  Y",strtotime($journal_date));?>
 						<td><?php echo "$description ";?></td>
 						<td> 
-							<button type="submit" class="btn btn-primary " id="btn-view" onclick="redirect(<?php echo "$id";?>);" name="btnview"><i class="fa fa-eye"> </i></button> 
-							<button type="submit" class="btn btn-primary " id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
-							<button type="submit" class="btn btn-primary " id="btn-archive" name="btnarchive" onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
+							<button type="submit" class="btn btn-primary " id="btn-view" data-toggle="tooltip" data-placement="top" title="Open Journal" onclick="redirect(<?php echo "$id";?>);" name="btnview"><i class="fa fa-eye"> </i></button> 
+							<button type="submit" class="btn btn-primary " id="btn-edit" name="btnedit" data-toggle="tooltip" data-placement="top" title="Edit Journal Info"  onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
+							<button type="submit" class="btn btn-primary " id="btn-archive" name="btnarchive" data-toggle="tooltip" data-placement="top" title="Archive this journal"  onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
 						</td>
 				</tr><?php }
 				}; ?>

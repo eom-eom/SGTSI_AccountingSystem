@@ -38,7 +38,7 @@
 				<span>Ledger</span>
 			</a>
 			<ul class="treeview-menu menu-open">
-					<li><a href="#">
+					<li><a href="general_ledger.php">
 						<i class="fa fa-file-text"></i>
 						<span>General Ledger</span>
 						</a>
