@@ -4,6 +4,11 @@
 		addHead('Trial Balance');
 		addNavBar();
 		addSideBar();
+  if(isset($_POST['from_date'])&&isset($_POST['to_date'])){
+      $fromdate = $_POST['from_date'];
+      $todate = $_POST['to_date'];
+    }
+
 	}else{
 		redirect('index.php');
 		setAlert('Please log in to continue','danger');
@@ -13,51 +18,175 @@
 
 
 <div class="content-wrapper">
+  <section class="content-header">
+    <h2> Trial Balance</h2>
+    <?php
+    Alert();
+    unsetAlert();
+    $journalstable=$connection->myQuery("Select * From journals where is_archived != 1");
+    if(isset($_POST['from_date'])&&isset($_POST['to_date'])){
+      $from_date = $connection->myQuery("Select journal_date From journals where journal_id = $fromdate")->fetch(PDO::FETCH_ASSOC);
+      $to_date = $connection->myQuery("Select journal_date From journals where journal_id = $todate")->fetch(PDO::FETCH_ASSOC);
+      echo "<h3 align='center'><strong>".date("F d Y",strtotime($from_date['journal_date']))."</strong> to <strong>". date("F d Y",strtotime($to_date['journal_date'])) ."</strong></h3>";
+    }
+  ?>
 
-	<div class="box">
-            <div class="box-header">
-              <center><h3 class="box-title">Trial Balance</h3></center>
-			  <center><h5 class="box-title"><?php  ?></h5></center>
-				<!-- Split button -->	
-				<div class="btn-group">
-					<button type="button" class="btn btn-flat btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="fa fa-calendar"></i><span> Select Month</span>
-					<i class="glyphicon glyphicon-chevron-down"></i></button>
-					<ul class="dropdown-menu">
-						<li class="dropdown-item"><a  href="#">Month 1</a></li>
-						<li class="dropdown-item"><a  href="#">Month 2</a></li>
-						<li class="dropdown-item"><a  href="#">Month 3</a></li>
-					</ul>
-				</div>
-				
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table table-striped">
-                <tbody><tr>
-                  <th>Account Title</th>
-                  <th>Debit</th>
-                  <th>Credit</th>
-                </tr>
-                <tr>
-                  <td>Clean database</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Cron job running</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Fix and squish bugs</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-	</div>
-		  
+    	<div class="box">
+          <div class="box-body">
+            <form action='trial_balance.php' method='POST'>
+              <div class="form-group">
+                <label class="col-lg-2 control-label" for='fromdate'>From the Date of</label>
+                <div class="col-lg-2">
+                  <select class='form-control' name="from_date" id="fromdate" required>
+                    <option disabled selected value="">-</option>
+                    <?php 
+                      while($row=$journalstable->fetch(PDO::FETCH_ASSOC)){
+                        ?>
+                        <option value=<?php echo $row['journal_id'];?>><?php echo htmlspecialchars($row['journal_date']);?></option>
+                        <?php
+                      }
+                      
+                    ?>
+                  </select>
+                </div>
+                <label class="col-lg-1 control-label" for='todate'>To</label>
+                <div class="col-lg-2">
+                  <select class='form-control' name="to_date" id="todate" required>
+                    <option disabled selected value="">-</option>
+                    <?php 
+                      $journalstable=$connection->myQuery("Select * From journals where is_archived != 1");
+                      while($row=$journalstable->fetch(PDO::FETCH_ASSOC)){
+                        ?>
+                        <option value=<?php echo $row['journal_id'];?>><?php echo htmlspecialchars($row['journal_date']);?></option>
+                        <?php
+                      }
+                      
+                    ?>
+                  </select>
+                </div>
+                <button type='submit' class='btn btn-success'>Make Trial Balance</button>
+              </div>
+            </form>
+          </div> 
+
+
+            <div class="box-body">
+                  <table id="table" class="table responsive-table table-bordered table-striped">
+                    <thead>
+                       <tr class="tableheader">
+                        <th>ACCOUNT</th>
+                        <th>DEBIT</th>
+                        <th>CREDIT</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr class="tableheader"> -->
+                      <!-- <tr class="tableheader"> -->
+          <?php
+            $ledger_array = array();
+          
+            if(isset($_POST['to_date'])&&isset($_POST['from_date'])){
+              
+              if($fromdate<=$todate){
+                $journalentries = $connection -> myQuery("Select journal_entry_no, date_of_entry from journal_entries where journal_id between $fromdate and $todate");
+              }else{
+                $journalentries = $connection -> myQuery("Select journal_entry_no, date_of_entry from journal_entries where journal_id between $todate and $fromdate");
+              }
+            
+            
+              while($row=$journalentries->fetch(PDO::FETCH_ASSOC)){
+                $journal_entry_no = $row['journal_entry_no'];
+                $journal_date = $row['date_of_entry'];
+                $journaldetails = $connection -> myQuery("Select * from journal_details INNER JOIN accounts on accounts.acc_id = journal_details.account_id
+                INNER JOIN account_types on accounts.type = account_types.acc_types_id where journal_entry_no = $journal_entry_no");
+              
+                while($rows = $journaldetails->fetch(PDO::FETCH_ASSOC)){
+                  $newaccount = $rows['account_name'];
+                  if(array_key_exists($newaccount, $ledger_array)){
+                    if($rows['is_debit']==1){
+                      $previous = count($ledger_array[$newaccount])-1;
+                      if($rows['is_debit']==$rows['inc_when_debit']){
+                        $ledger_array[$newaccount][] = array($journal_date,$rows['amount'],"-", $rows['is_debit'],$ledger_array[$newaccount][$previous][4] + $rows['amount']);
+                      }else{
+                        $ledger_array[$newaccount][] = array($journal_date,$rows['amount'],"-", $rows['is_debit'],$ledger_array[$newaccount][$previous][4] - $rows['amount']);
+                      }
+                    }   else{
+                      $previous = count($ledger_array[$newaccount])-1;
+                      if($rows['is_debit']==$rows['inc_when_debit']){
+                        $ledger_array[$newaccount][] = array($journal_date,"-",$rows['amount'], $rows['is_debit'],$ledger_array[$newaccount][$previous][4] + $rows['amount']);
+                      }else{
+                        $ledger_array[$newaccount][] = array($journal_date,"-",$rows['amount'], $rows['is_debit'],$ledger_array[$newaccount][$previous][4] - $rows['amount']);
+                      }
+                    }
+                  }else{
+                    
+                    if($rows['is_debit']==1){
+                      if($rows['is_debit']==$rows['inc_when_debit']){
+                        $ledger_array[$newaccount][] = array($journal_date,$rows['amount'],"-", $rows['is_debit'],+$rows['amount']);
+                      }else{
+                        $ledger_array[$newaccount][] = array($journal_date,$rows['amount'],"-", $rows['is_debit'],-$rows['amount']);
+                      }
+                    }else{
+                      if($rows['is_debit']==$rows['inc_when_debit']){
+                        $ledger_array[$newaccount][] = array($journal_date,"-",$rows['amount'], $rows['is_debit'],+$rows['amount']);
+                      }else{
+                        $ledger_array[$newaccount][] = array($journal_date,"-",$rows['amount'], $rows['is_debit'],-$rows['amount']);
+                      }
+                    }
+                  
+                  }
+                }
+              }
+              $debitSum = 0;
+              $creditSum = 0;
+              foreach($ledger_array as $account_title => $content){
+                $row = 0;
+                for($row = 0; $row<=count($content)-1;$row++){
+                  if($row==0){
+                    echo "<tr >";
+                    echo "<td style='border-bottom:1pt solid black;'>".$account_title."</td>";
+                   
+                 
+                
+                  }
+                }
+                
+                if (floatval($content[$row-1][3]) == 0 && floatval($content[$row-1][4] == 0))  {
+                  echo "<td style='border-bottom:1pt solid black;'>-</td>";
+                  echo "<td style='border-bottom:1pt solid black;'>-</td>";
+                  
+                  
+                  
+                }elseif(floatval($content[$row-1][3]) == 0 && floatval($content[$row-1][2] != 0)){
+                    echo "<td style='border-bottom:1pt solid black;'>-</td>";
+                    echo "<td style='border-bottom:1pt solid black;'><strong>".abs(floatval($content[$row-1][4]))."</strong></td>"; 
+                    $creditSum += abs(floatval($content[$row-1][4]));
+                }else
+                  {
+                    echo "<td style='border-bottom:1pt solid black;'><strong>".abs(floatval($content[$row-1][4]))."</strong></td>"; 
+                    echo "<td style='border-bottom:1pt solid black;'>-</td>";
+                    $debitSum += abs(floatval($content[$row-1][4]));
+
+                  }
+              
+                echo "</tr>";
+                
+              }   
+                echo "<tr >";
+                echo "<td style='border-bottom:1pt solid black;'><strong>Total</strong></td>";
+                //td
+                echo "<td style='border-bottom:1pt solid black;'><strong>" . $debitSum . "</strong></td>";
+                echo "<td style='border-bottom:1pt solid black;'><strong>". $creditSum . "</strong></td>";
+                echo "</tr>";
+            }
+            
+          ?>
+                    </tbody>
+                  </table>
+                
+                <!-- /.box-body -->
+    	</div>
+  	</section>  
 </div>
 
 <?php
