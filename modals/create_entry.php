@@ -1,6 +1,6 @@
 <style>.datepicker{z-index:1200 !important;}</style>
 
-<form  action="savenewEntry.php" method="POST">
+<form method="post" action="savenewEntry.php">
 
 <div class="modal fade" id='modal_createentry'>
 
@@ -33,14 +33,17 @@
 											$JournalMonth= sprintf("%02s", $JournalMonth);	
 											$JournalEntryCount = implode( " ",$JournalEntryCount);
 											
-											echo  substr($JournalYear,2).$JournalMonth.'-'.($JournalEntryCount+1); 
+											$JournalEntry_ID = substr($JournalYear,2).$JournalMonth.'-'.($JournalEntryCount+1); 
+											echo $JournalEntry_ID;
 											
 						?>
+						<input type="hidden" name="JournalNumber" value="<?php echo $JournalNumber?>"></input>
+						<input type="hidden" name="JournalID" value="<?php echo $JournalEntry_ID?>"></input>
 	
 				</div>
 	
 				<div class="input-group date input-group-sm" data-provide="datepicker">
-					<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" required>
+					<input type="text" placeholder="mm/dd/yyyy" name="entry_date" class="form-control" required>
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</div>
@@ -49,7 +52,6 @@
 			
 	<div class="modal-body" >
 	
-		<form method="post">
 			
 		<!-- Debit Table-->
 			
@@ -140,11 +142,10 @@
 						</div>				
 		
 					</div>
-				</form>
 		
 					<div class="form-group">
                   <label>Description:</label>
-                  <input class="form-control" placeholder="Description"></input>
+                  <input class="form-control" name="entry_description" placeholder="Description"></input>
                 </div>
 				
 
@@ -153,7 +154,7 @@
 		
 			<div class="modal-footer">
 					<button type="button" class="btn btn-danger pull-left" data-dismiss="modal" onclick="clearTable()">Close</button>   
-					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="submit" class="btn btn-primary" onclick="GetCellValues()">Save changes</button>
 			</div>
 			
 		</div>

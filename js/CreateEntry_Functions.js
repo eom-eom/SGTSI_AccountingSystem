@@ -2,7 +2,6 @@
             $('#modal_createentry').modal('show');	
         }
 		
-	var dr_id = 1;
 	
 	function Dr(){
 								
@@ -13,22 +12,35 @@
 		//document.getElementById('Result_AmtDr').innerHTML =Amount;
 		var DebitTable = document.getElementById("DebitTable");
 		var row = DebitTable.insertRow(-1);
-		var Result_Dr = row.insertCell(0);
-		var Result_AmtDr = row.insertCell(1);
+		
+		
+			var Result_Dr = row.insertCell(0);
+				var debit_name_input = document.createElement('input');
+				debit_name_input.type='hidden';
+				debit_name_input.name='drnames[]';
+				debit_name_input.value=DrTitle;
+				Result_Dr.innerHTML = DrTitle;
+				Result_Dr.appendChild(debit_name_input);
+		
+		
+			var Result_AmtDr = row.insertCell(1);
+				var debit_value_input = document.createElement('input');
+				debit_value_input.type='hidden';
+				debit_value_input.name='drvalues[]';
+				debit_value_input.value=AmountDr;
+				Result_AmtDr.innerHTML = AmountDr;
+				Result_AmtDr.appendChild(debit_value_input);
+
+
 		var DelDr = row.insertCell(2);
-		Result_Dr.innerHTML = DrTitle;
-		Result_AmtDr.innerHTML = AmountDr;
 		DelDr.innerHTML = "<button type='button' class='btn bg-maroon btn-xs fa fa-trash' onclick='deleteDr(this)'></button>"
 		
-		row.id = dr_id;
-		dr_id++;
 		
 		
 				
 		return false;
 	}
-	
-	var cr_id = 1;
+
 						
 	function Cr(){
 			
@@ -38,15 +50,27 @@
 
 		var CreditTable = document.getElementById("CreditTable");
 		var row = CreditTable.insertRow(-1);
-		var Result_Cr = row.insertCell(0);
-		var Result_AmtCr= row.insertCell(1);
+		
+			var Result_Cr = row.insertCell(0);
+				var credit_name_input = document.createElement('input');
+				credit_name_input.type='hidden';
+				credit_name_input.name='crnames[]';
+				credit_name_input.value=CrTitle;
+				Result_Cr.innerHTML = CrTitle;
+				Result_Cr.appendChild(credit_name_input);
+				
+			var Result_AmtCr= row.insertCell(1);
+				var credit_value_input = document.createElement('input');
+				credit_value_input .type='hidden';
+				credit_value_input.name='crvalues[]';
+				credit_value_input .value=AmountCrvalue;
+				Result_AmtCr.innerHTML = AmountCrvalue;
+				Result_AmtCr.appendChild(credit_value_input);
+		
 		var DelCr = row.insertCell(2);
-		Result_Cr.innerHTML = CrTitle;
-		Result_AmtCr.innerHTML = AmountCrvalue;
 		DelCr.innerHTML = "<button type='button' class='btn bg-maroon btn-xs fa fa-trash' onclick='deleteCr(this)'></button>"
 		
-		row.id = cr_id;
-		cr_id++;
+	
 		
 
 				

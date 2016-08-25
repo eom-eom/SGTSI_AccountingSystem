@@ -10,12 +10,6 @@
 	}
 	
 ?>
-<button></button>
-
-
-
-
-
 
 
 <div class="content-wrapper">
@@ -134,12 +128,13 @@
 				
 			</tbody>
 		</table>
+		</div>
+	</div>
+</div>
 
 <!-- add content here-->
 
 
-
-</div>
 	
 <?php
 		include_once("modals/create_entry.php");
