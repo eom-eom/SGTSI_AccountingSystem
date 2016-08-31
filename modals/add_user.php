@@ -28,11 +28,11 @@
           <input type="text" class="form-control" required> -->
         User Type
           <br>
-          <select name='account' required class="form-control">
-            <option> </option>
-            <option value="admin"> Administrator </option>
-            <option value="Accountant"> Accountant </option>
-          </select>				
+			  <select name='account' required class="form-control">
+				<option> </option>
+				<option value="admin"> Administrator </option>
+				<option value="Accountant"> Accountant </option>
+			  </select>				
             </div>
           </div>
           <div class="modal-footer">

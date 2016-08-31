@@ -8,14 +8,10 @@
 <script src="plugins/daterangepicker/moments.js"></script>
 <script src="plugins/select2/select2.min.js"></script>		
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
-<script text="text/javascript">
-	// But then when the nested modal is hidden we reset modal.enforceFocus
-	var enforceModalFocusFn = $.fn.modal.Constructor.prototype.enforceFocus;
-	$.fn.modal.Constructor.prototype.enforceFocus = function() {};
-	$confModal.on('hidden', function() {
-    $.fn.modal.Constructor.prototype.enforceF
-</script>
+<script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.js"></script>
+<script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.categories.js"></script>
+<script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.orderBars.js"></script>
+	
 
 <script type="text/javascript">
 $(function() {

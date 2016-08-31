@@ -30,7 +30,7 @@
 					<th>ACCOUNT TITLE</th>
 					<th>DEBIT</th>
 					<th>CREDIT</th>
-					<th>ACTIONS</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -84,10 +84,6 @@
 					</td>
 					<td><?php if($isDebit==1){echo htmlspecialchars($row['amount']);}?></td>
 					<td><?php if($isDebit==0){echo htmlspecialchars($row['amount']);}?></td>
-					<td rowspan='<?php echo $rowspan;?>' class='text-center' style="border-bottom:1pt solid black;">
-						<a href='#' class='btn btn-success btn-sm'><span class='fa fa-pencil'></span></a>
-						<a href='#' onclick="" class='btn btn-danger btn-sm'><span class='fa fa-trash'></span></a>
-					</td>
 					</tr>
 				<?php
 						}else{
