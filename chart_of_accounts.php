@@ -12,7 +12,7 @@
 
 <div class="content-wrapper">
 	<?php
-		include_once('modals/create_journal.php');
+		include_once('modals/add_account.php');
 	?>
 <section class="content-header">
 	<h2> Chart Of Accounts </h2>
@@ -24,7 +24,7 @@
 		<div class="box-body">
 				<input type="text" class="container-fluid" size="30" name="search" placeholder="Search">
 				<button type="submit" class="btn btn-primary" id="btn-search" name="btnsearch"><i class="fa fa-search"></i> </button>
-				<button type="submit" class="btn btn-primary" id="btn-add" onclick='createJournal();' name="btnadd" style="float:right;"><i class="fa fa-plus">Register an Account</i></button>
+				<button type="submit" class="btn btn-primary" id="btn-add" onclick='addAccount();' name="btnadd" style="float:right;"><i class="fa fa-plus"> &nbsp; Register an Account</i></button>
 		</div>
 	<div class="box-body">
 		<table id="table" class="table responsive-table table-bordered table-striped">
@@ -53,8 +53,8 @@
 						<td><?php echo "$name ";?></td>
 						<td> 
 							
-							<button type="submit" class="btn btn-primary " id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
-							<button type="submit" class="btn btn-primary " id="btn-archive" name="btnarchive" onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
+							<button type="submit" class="btn btn-primary btn-success" id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
+							<button type="submit" class="btn btn-primary btn-warning" id="btn-archive" name="btnarchive" onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
 						</td>
 				</tr><?php }
 				}; ?>

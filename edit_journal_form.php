@@ -51,7 +51,7 @@
 								<div class="input-group date" data-provide="datepicker">
 									<label class='col-sm-12 col-md-3 control-label'>Date: </label>
 									<div class='col-sm-12 col-md-6'>
-										<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" value=<?php echo $journal_date;?> style="position: relative; z-index: 100000;" required>
+										<input type="text" placeholder="mm/dd/yyyy" name="date" class="form-control" style="position: relative; z-index: 100000;" require value=<?php echo $journal_date;?> >
 										<div class="input-group-addon">
 											<span class="glyphicon glyphicon-calendar"></span>
 										</div>
