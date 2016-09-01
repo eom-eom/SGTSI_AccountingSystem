@@ -7,12 +7,12 @@
 	}else{
 		redirect('index.php');
 		setAlert('Please log in to continue','danger');
-	}s
+	}
 ?>
 
 <div class="content-wrapper">
 	<?php
-		include_once('modals/add_account.php');
+		include_once('modals/register_account.php');
 	?>
 <section class="content-header">
 	<h2> Chart Of Accounts </h2>
@@ -86,7 +86,7 @@
 	
 		//window.location ="/journal_entry.php?id=" + id;
 		var href = window.location.href;
-		var string = href.substr(0,href.lastIndexOf('/'))+"/edit_journal_form.php?id=" + id;
+		var string = href.substr(0,href.lastIndexOf('/'))+"/edit_account.php?id=" + id;
 		window.location=string;
 	}
 	
