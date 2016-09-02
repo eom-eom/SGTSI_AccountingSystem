@@ -7,7 +7,7 @@
 	}else{
 		redirect('index.php');
 		setAlert('Please log in to continue','danger');
-	}s
+	}
 ?>
 
 <div class="content-wrapper">
@@ -24,7 +24,6 @@
 		<div class="box-body">
 				<input type="text" class="container-fluid" size="30" name="search" placeholder="Search">
 				<button type="submit" class="btn btn-primary" id="btn-search" name="btnsearch"><i class="fa fa-search"></i> </button>
-				<button type="submit" class="btn btn-primary" id="btn-add" onclick='createJournal();' name="btnadd" style="float:right;"><i class="fa fa-plus">Register an Account</i></button>
 		</div>
 	<div class="box-body">
 		<table id="table" class="table responsive-table table-bordered table-striped">
@@ -53,8 +52,8 @@
 						<td><?php echo "$name ";?></td>
 						<td> 
 							
-							<button type="submit" class="btn btn-primary " id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
-							<button type="submit" class="btn btn-primary " id="btn-archive" name="btnarchive" onclick="unarchive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
+							<button type="submit" class="btn btn-success" id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
+							<button type="submit" class="btn btn-warning" id="btn-archive" name="btnarchive" onclick="unarchive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
 						</td>
 				</tr><?php }
 				}; ?>

@@ -52,9 +52,9 @@
 						<td><?php echo "$journal_date ";?></td>
 						<td><?php echo "$description ";?></td>
 						<td> 
-							<button type="submit" class="btn btn-primary " id="btn-view" data-toggle="tooltip" data-placement="top" title="Open Entries"  onclick="redirect(<?php echo "$id";?>);" name="btnview"><i class="fa fa-eye"> </i></button> 
+							<button type="submit" class="btn btn-success" id="btn-view" data-toggle="tooltip" data-placement="top" title="Open Entries"  onclick="redirect(<?php echo "$id";?>);" name="btnview"><i class="fa fa-eye"> </i></button> 
 							
-							<button type="submit" class="btn btn-primary " id="btn-archive" name="btnarchive" data-toggle="tooltip" data-placement="top" title="Restore this Journal"  onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
+							<button type="submit" class="btn btn-warning" id="btn-archive" name="btnarchive" data-toggle="tooltip" data-placement="top" title="Restore this Journal"  onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
 						</td>
 				</tr><?php }
 				}; ?>

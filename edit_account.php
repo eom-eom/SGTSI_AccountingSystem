@@ -5,9 +5,9 @@
 		addNavBar();
 		addSideBar();
 		$acc_id = $_GET['id'];
-		$query = $connection->myQuery("SELECT * FROM accounts INNER JOIN account_types on accounts.type = account_types.acc_types_id")->fetch(PDO::FETCH_ASSOC);
+		$query = $connection->myQuery("SELECT * FROM accounts INNER JOIN account_types where accounts.type = account_types.acc_types_id")->fetch(PDO::FETCH_ASSOC);
 		$account_name = $query['account_name'];
-		$account_types = $query['name'];
+		$account_type = $query['name'];
 		
 	}else{
 		redirect('index.php');
@@ -49,7 +49,7 @@
 							<label class='col-sm-3 control-label'>Account Type:</label>
 								<div class='col-md-8'>
 									<select name='acct_type' required class="form-control">
-										<option><?php echo $account_types;?> </option>
+										<option><?php echo $account_type;?> </option>
 										<option> </option>
 										<option value="1"> Revenue(Main) </option>
 										<option value="2"> Revenue(Side) </option>
@@ -67,11 +67,11 @@
 						</div>
 		</div>
 
-                            <div class='col-md-8 col-md-offset-2' align="center">
-                            	<br>
-                                <button type='submit' class='btn btn-success'> <span class='fa fa-check'></span> &nbsp; Save Changes</button>
-                                    <a href='chart_of_accounts.php' class='btn btn-danger'>Back</a>
-                            </div>            
+                        <div class='col-md-8 col-md-offset-2' align="center">
+                        	<br>
+                            <button type='submit' class='btn btn-success'> <span class='fa fa-check'></span> &nbsp; Save Changes</button>
+                            <a href='chart_of_accounts.php' class='btn btn-danger'>Back</a>
+                        </div>            
             </form>
     </div>
 	</div>

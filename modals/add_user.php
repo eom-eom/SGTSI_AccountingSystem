@@ -18,21 +18,20 @@
           </div>
           <div class="modal-body" >
             <div class='form-group'>
-        Full Name
-          <input type="text" name='fullname' class="form-control" required>
-        Username
-          <input type="text" name='username' class="form-control" required>
-        Password
-          <input type="text" name='password' class="form-control" required>
-<!--         Confirm Password
-          <input type="text" class="form-control" required> -->
-        User Type
-          <br>
-			  <select name='account' required class="form-control">
-				<option> </option>
-				<option value="admin"> Administrator </option>
-				<option value="Accountant"> Accountant </option>
-			  </select>				
+              Full Name
+                <input type="text" name='fullname' class="form-control" required> <br>
+              Username
+                <input type="text" name='username' class="form-control" required> <br>
+              Password
+                <input type="text" name='password' class="form-control" required> <br>
+      <!--         Confirm Password
+                <input type="text" class="form-control" required> -->
+              User Type
+        			  <select name='account' required class="form-control">
+          				<option> </option>
+          				<option value="Administrator"> Administrator </option>
+          				<option value="Accountant"> Accountant </option>
+        			  </select>				
             </div>
           </div>
           <div class="modal-footer">

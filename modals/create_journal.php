@@ -17,6 +17,7 @@
 						<span class="glyphicon glyphicon-calendar"></span>
 					</div>
 				</div>
+        <br>
 				DESCRIPTION
 				 <textarea name='desc' required="" maxlength="100" placeholder="Enter Journal Description (100 chars)" class='form-control' style='resize: none' rows='4'></textarea>
 				
@@ -24,8 +25,8 @@
           </div>
           <div class="modal-footer">
 		  
-            <button type="submit" class="btn btn-brand btn-flat">Create</button>
-			<button type="button" data-dismiss="modal" class="btn btn-brand btn-flat">Cancel</button>
+            <button type="submit" class="btn btn-success">Create</button>
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Cancel</button>
           </div>
         </form>
       </div><!-- /.modal-content -->

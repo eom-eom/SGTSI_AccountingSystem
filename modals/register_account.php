@@ -3,7 +3,7 @@
 <div class="modal fade" id='modal_registerAccount'>
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
-        <form method="POST" action='php/addjournal.php'>
+        <form method="POST" action='php/registeringAccount.php'>
           <div class="modal-header" style="background-color:#3c8dbc;">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" style="color:#fff;"><strong> Create A Journal </strong></h4>
