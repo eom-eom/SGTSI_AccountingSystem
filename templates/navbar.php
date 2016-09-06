@@ -1,5 +1,4 @@
-
-<header class="main-header" >
+ <header class="main-header" >
    <a href="dash.php" class="logo">
 	<span class="logo-lg">
 		Accounting System

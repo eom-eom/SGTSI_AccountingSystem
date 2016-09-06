@@ -1,6 +1,6 @@
 <style>.datepicker{z-index:1200 !important;}</style>
 
-<form method="post" action="savenewEntry.php">
+<form  name="JournalEntries" method="post" action="savenewEntry.php">
 
 <div class="modal fade" id='modal_createentry'>
 
@@ -33,7 +33,7 @@
 											$JournalMonth= sprintf("%02s", $JournalMonth);	
 											$JournalEntryCount = implode( " ",$JournalEntryCount);
 											
-											$JournalEntry_ID = substr($JournalYear,2).$JournalMonth.'-'.($JournalEntryCount+1); 
+											$JournalEntry_ID = substr($JournalYear,2).$JournalMonth.($JournalEntryCount+1); 
 											echo $JournalEntry_ID;
 											
 						?>
@@ -72,15 +72,12 @@
 						</select>
 						
 					<div class="input-group margin input-group-sm">
-						<input type="text" class="form-control" placeholder="Amount" id = "AmountDr">
+						<input type="text" class="form-control" placeholder="Amount" id = "AmountDr" onkeypress="return isNumberKey(event)">
 						<span class="input-group-btn">
-								<button type="button" class="btn btn-primary btn-flat " onclick="return Dr(this);">Add Debit</button>
-								<button type="reset" class="btn btn-danger btn-flat">Cancel</button>
+								<button type="button" class="btn btn-primary btn-flat " onclick="return Dr();">Add Debit</button>
+								<button type="button"  id="dreset" class="btn btn-danger btn-flat">Cancel</button>
 						</span>						
 					</div>
-			
-			
-			
 			
 					<div style="overflow: auto; height: 180px;">
 						<table class="table table-striped" id="DebitTable">
@@ -96,7 +93,12 @@
 						</table>
 					</div>
 					
+					<input id="debit_total" class="form-control" value="0" placeholder="Total Debit" disabled >
+					
 				</div>
+				
+				
+				
 
 		<!-- Credit Table-->		
 		
@@ -118,10 +120,10 @@
 						
 						
 						<div class="input-group margin input-group-sm">
-								<input type="text" class="form-control" placeholder="Amount" id = "AmountCr">
+								<input type="text" class="form-control" placeholder="Amount" id = "AmountCr"  onkeypress="return isNumberKey(event)">
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-primary btn-flat " onclick="return Cr()">Add Credit</button>
-								<button type="reset" class="btn btn-danger btn-flat ">Cancel</button>
+								<button type="button" class="btn btn-primary btn-flat " onclick="return Cr();">Add Credit</button>
+								<button type="button"  id="creset" class="btn btn-danger btn-flat ">Cancel</button>
 							</span>
 						</div>
 					
@@ -140,21 +142,24 @@
 								</tbody>
 							</table>
 						</div>				
-		
+							<input id="credit_total" class="form-control" value="0" placeholder="Total Credit" disabled>
 					</div>
+					
 		
 					<div class="form-group">
                   <label>Description:</label>
-                  <input class="form-control" name="entry_description" placeholder="Description"></input>
+                  <input class="form-control" name="entry_description" placeholder="Description" onkeypress="return noSpecialChar(event)" required>
                 </div>
 				
 
 			</div>
+			
+			
 		
 		
 			<div class="modal-footer">
 					<button type="button" class="btn btn-danger pull-left" data-dismiss="modal" onclick="clearTable()">Close</button>   
-					<button type="submit" class="btn btn-primary" onclick="GetCellValues()">Save changes</button>
+					<button type="submit" id="pass" class="btn btn-primary" onclick="GetCellValues()" disabled>Save changes</button>
 			</div>
 			
 		</div>
@@ -166,3 +171,13 @@
 
 
  <script type="text/javascript" src="js/CreateEntry_Functions.js"></script>
+ <script type="text/javascript">
+    document.getElementById('creset').onclick= function() {
+        var field= document.getElementById('AmountCr');
+        field.value= field.defaultValue;
+    };
+	    document.getElementById('dreset').onclick= function() {
+        var field= document.getElementById('AmountDr');
+        field.value= field.defaultValue;
+    };
+</script>

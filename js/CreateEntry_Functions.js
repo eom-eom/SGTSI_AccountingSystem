@@ -1,10 +1,28 @@
 	 function createEntry(){
             $('#modal_createentry').modal('show');	
         }
+
+// validation		
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode != 46 &&(charCode < 48 || charCode > 57)))
+			return false;
+		return true;
+	}
+	
+	
+function noSpecialChar(evt){
+	var checkCode = (evt.which) ? evt.which : event.keyCode
+	if((checkCode==8)||(checkCode==32)||(checkCode>=48 && checkCode<=57)||(checkCode>=65 && checkCode<=90)||(checkCode>=97 && checkCode<=122))
+            return true;
+		return false;
+		}
 		
 	
+// dr and cr functions	
 	function Dr(){
-								
+		amountDTotal();
+		equate();
 		var DrTitle= document.getElementById('selectdr').value;
 		//document.getElementById('Result_Dr').innerHTML = DrTitle;
 								
@@ -12,6 +30,7 @@
 		//document.getElementById('Result_AmtDr').innerHTML =Amount;
 		var DebitTable = document.getElementById("DebitTable");
 		var row = DebitTable.insertRow(-1);
+		
 		
 		
 			var Result_Dr = row.insertCell(0);
@@ -30,24 +49,24 @@
 				debit_value_input.value=AmountDr;
 				Result_AmtDr.innerHTML = AmountDr;
 				Result_AmtDr.appendChild(debit_value_input);
-
-
-		var DelDr = row.insertCell(2);
-		DelDr.innerHTML = "<button type='button' class='btn bg-maroon btn-xs fa fa-trash' onclick='deleteDr(this)'></button>"
-		
-		
-		
+	
 				
+			var DelDr = row.insertCell(2);
+				DelDr.innerHTML = "<button type='button' value="+AmountDr+" class='btn bg-maroon btn-xs fa fa-trash' onclick='deleteDr(this)'></button>"
+			
 		return false;
+		
 	}
-
+	
+	
 						
 	function Cr(){
 			
-		var CrTitle= document.getElementById('selectcr').value;
-								
-		var AmountCrvalue = document.getElementById('AmountCr').value;	
-
+		amountCTotal() ;
+		equate();
+		
+		var CrTitle= document.getElementById('selectcr').value;					
+		var AmountCr = document.getElementById('AmountCr').value;	
 		var CreditTable = document.getElementById("CreditTable");
 		var row = CreditTable.insertRow(-1);
 		
@@ -63,12 +82,12 @@
 				var credit_value_input = document.createElement('input');
 				credit_value_input .type='hidden';
 				credit_value_input.name='crvalues[]';
-				credit_value_input .value=AmountCrvalue;
-				Result_AmtCr.innerHTML = AmountCrvalue;
+				credit_value_input .value=AmountCr;
+				Result_AmtCr.innerHTML = AmountCr;
 				Result_AmtCr.appendChild(credit_value_input);
 		
 		var DelCr = row.insertCell(2);
-		DelCr.innerHTML = "<button type='button' class='btn bg-maroon btn-xs fa fa-trash' onclick='deleteCr(this)'></button>"
+		DelCr.innerHTML = "<button type='button' value="+AmountCr+" class='btn bg-maroon btn-xs fa fa-trash' onclick='deleteCr(this)'></button>"
 		
 	
 		
@@ -78,18 +97,47 @@
 	}
 	
 	
+function amountDTotal() {
+	
+	
+   var numbers = parseFloat(document.getElementById('AmountDr').value);
+   var total = parseFloat(document.getElementById('debit_total').value);
+	total = total +numbers;
+	
+  document.getElementById('debit_total').value = total;
+  
+  
+}
+
+function amountCTotal() {
+   var numbers = parseFloat(document.getElementById('AmountCr').value);
+  document.getElementById('credit_total').value = parseFloat(document.getElementById('credit_total').value) + numbers;
+  
+}
+	
 	function deleteDr(r){
+		
+		equate();
 		
 		    var i = r.parentNode.parentNode.rowIndex;
 			document.getElementById("DebitTable").deleteRow(i);
+			var mis = parseFloat(r.value);
+		
+			document.getElementById('debit_total').value = parseFloat(document.getElementById('debit_total').value) - mis;
 		
 	}
 	
 	
 	function deleteCr(r){
 		
+		equate();
+		
 		    var i = r.parentNode.parentNode.rowIndex;
 			document.getElementById("CreditTable").deleteRow(i);
+			
+			var mis = parseFloat(r.value);
+		
+			document.getElementById('credit_total').value = parseFloat(document.getElementById('credit_total').value) - mis;
 		
 	}
 	
@@ -114,4 +162,16 @@
 			document.getElementById('AmountCr').value = "";
 	}
 	
+	function equate(){
+		var debit_total = parseFloat(document.getElementById('debit_total').value);
+		var credit_total = parseFloat(document.getElementById('credit_total').value);
+		var pass = document.getElementById('pass')
+		
+		if(debit_total == credit_total){
+			pass.removeAttribute('disabled');
+		}else{
+			pass.disabled = true;
+		}
+		
+	}
 	
