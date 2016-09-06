@@ -52,7 +52,7 @@
 						<td><?php echo "$name ";?></td>
 						<td> 
 							
-							<button type="submit" class="btn btn-success" id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
+							<button type="submit" class="btn bg-maroon" id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
 							<button type="submit" class="btn btn-warning" id="btn-archive" name="btnarchive" onclick="unarchive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
 						</td>
 				</tr><?php }
@@ -84,7 +84,7 @@
 	
 		//window.location ="/journal_entry.php?id=" + id;
 		var href = window.location.href;
-		var string = href.substr(0,href.lastIndexOf('/'))+"/edit_journal_form.php?id=" + id;
+		var string = href.substr(0,href.lastIndexOf('/'))+"/edit_account.php?id=" + id;
 		window.location=string;
 	}
 	

@@ -53,8 +53,8 @@
 						<td><?php echo "$name ";?></td>
 						<td> 
 							
-							<button type="submit" class="btn bg-maroon" id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
-							<button type="submit" class="btn btn-warning" id="btn-archive" name="btnarchive" onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
+							<button type="submit" class="btn bg-maroon" id="btn-edit" data-toggle="tooltip" data-placement="top" title="Edit Account Info" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
+							<button type="submit" class="btn btn-warning" id="btn-archive" name="btnarchive" data-toggle="tooltip" data-placement="top" title="Archive this account" onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
 						</td>
 				</tr><?php }
 				}; ?>
