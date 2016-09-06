@@ -3,7 +3,7 @@ function initChart(){
 
 	
 		$.get("php/initchart.php",{request:'initchart',type:"expense"},function(data){
-			console.log(data);
+			//console.log(data); DEBUG
 			var series=[];
 			$.each(data,function(key, val){
 				var subseries = {};
@@ -11,7 +11,7 @@ function initChart(){
 					subseries.data = val;
 					series.push(subseries);   	
 			});
-			console.log(series);
+			//sconsole.log(series); DEBUG
 			$.plot("#linegraph1",series,{
 				series:{
 					bars:{
@@ -36,7 +36,7 @@ function initChart(){
 		
 		
 			$.get("php/initchart.php",{request:'initchart',type:"income"},function(data){
-			console.log(data);
+			//console.log(data);DEBUG
 			var series=[];
 			$.each(data,function(key, val){
 				var subseries = {};
@@ -44,7 +44,7 @@ function initChart(){
 					subseries.data = val;
 					series.push(subseries);   	
 			});
-			console.log(series);
+			//console.log(series); DEBUG
 			$.plot("#linegraph2",series,{
 				series:{
 					
@@ -67,28 +67,40 @@ function initChart(){
 				
 				
 		
-		$.get("php/initchart.php",{request:'initchart',type:"income"},function(data){
-			console.log(data);
+		$.get("php/initchart.php",{request:'initchart',type:"net"},function(data){
+			//console.log(data); DEBUG
 			var series=[];
 			$.each(data,function(key, val){
-				var subseries = {};
+					var subseries = {};
 					subseries.label = key;
 					subseries.data = val;
-					series.push(subseries);   	
+					if(key!="Net Income"){
+						console.log("not net")
+						subseries.bars = { show:true, barWidth:0.15,order:1};
+					}
+					series.push(subseries);
+					//console.log(key);
 			});
-			
-			var d1 = [];
-			for (var i = 0; i < 32; i += i+0.5) {
-				d1.push([i, Math.cos(i)]);
-			
-			}	
-			var d2 = [];
-			for (var i = 0; i < 32; i += 0.5) {
-				d2.push([i, Math.sin(i)]);
-			
-			}
-			console.log(series);
-			$.plot("#linegraph", [ d1,d2]);
+		
+			//console.log(series); DEBUG
+			$.plot("#linegraph", series,{
+				series:{
+					
+				},
+				xaxis:{mode:"category",ticks:[
+					[0, "January"],
+					[1, "February"],
+					[2, "March"],
+					[3, "April"],
+					[4, "May"],
+					[5, "June"],
+					[6, "July"],
+					[7, "August"],
+					[8, "September"],
+					[9, "October"],
+					[10, "November"],
+					[11, "December"],
+				], tickLength:1}});
 		
 		},'json');
 				
@@ -173,6 +185,47 @@ function makeChart(ids,types){
 		},'json');
 				
 			
+		};
+		
+		if(types=='net'){
+			$.get("php/initchart.php",{request:'initchart',type:"net"},function(data){
+			//console.log(data); DEBUG
+			var series=[];
+			$.each(data,function(key, val){
+					var subseries = {};
+					subseries.label = key;
+					subseries.data = val;
+					if(key!="Net Income"){
+					
+						subseries.bars = { show:true, barWidth:0.15,order:1};
+						subseries.points = { show:true };
+					}
+					series.push(subseries);
+					//console.log(key);
+			});
+		
+			//console.log(series); DEBUG
+			$.plot(id, series,{
+				series:{
+					
+				},
+				xaxis:{mode:"category",ticks:[
+					[0, "January"],
+					[1, "February"],
+					[2, "March"],
+					[3, "April"],
+					[4, "May"],
+					[5, "June"],
+					[6, "July"],
+					[7, "August"],
+					[8, "September"],
+					[9, "October"],
+					[10, "November"],
+					[11, "December"],
+				], tickLength:1}});
+		
+		},'json');
+		
 		};
 	
 }

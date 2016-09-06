@@ -15,9 +15,7 @@
 ?>
 
 <div class="content-wrapper">
-	<?php
-		include_once('modals/create_journal.php');
-	?>
+	
 <section class="content-header">
 	<h2> General Ledger</h2>
 	<?php
@@ -87,6 +85,7 @@
 					if(isset($_POST['to_date'])&&isset($_POST['from_date'])){
 						
 						if($fromdate<=$todate){
+							
 							$journalentries = $connection -> myQuery("Select journal_entry_no, date_of_entry from journal_entries where journal_id between $fromdate and $todate");
 						}else{
 							$journalentries = $connection -> myQuery("Select journal_entry_no, date_of_entry from journal_entries where journal_id between $todate and $fromdate");
@@ -183,34 +182,6 @@ INNER JOIN account_types on accounts.type = account_types.acc_types_id where jou
 
  
 </div>
-
-<script type="text/javascript">
-
-	function redirect(id){
-	
-		//window.location ="/journal_entry.php?id=" + id;
-		var href = window.location.href;
-		var string = href.substr(0,href.lastIndexOf('/'))+"/journal_entry.php?id=" + id;
-		window.location=string;
-	};
-	
-	function archive(id){
-	
-		//window.location ="/journal_entry.php?id=" + id;
-		var href = window.location.href;
-		var string = href.substr(0,href.lastIndexOf('/'))+"/php/archive.php?id=" + id;
-		window.location=string;
-	}
-	
-	function edit(id){
-	
-		//window.location ="/journal_entry.php?id=" + id;
-		var href = window.location.href;
-		var string = href.substr(0,href.lastIndexOf('/'))+"/edit_journal_form.php?id=" + id;
-		window.location=string;
-	}
-	
-</script>
 
 
 

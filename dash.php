@@ -33,7 +33,7 @@
 		<div class="box box-header with-border">
 			<i class="fa fa-bar-chart-o" > <h3 class="box-title" >Expenses Per Month</h3></i>
 			<a class="btn pull-right" onclick="enlargeChart('Expenses Per Month','expense')" role="button">Enlarge <i class="fa fa-search"></i></a>
-		</div>
+		</div>	
 		</div>
 		<div class="box box-body">
 			 <div id="linegraph1" style="width:50%px;height:25vh;"></div>

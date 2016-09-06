@@ -62,7 +62,7 @@
 						<span>Balance Sheet</span>
 						</a>
 					</li>
-					<li><a href="#">
+					<li><a href="income_statement.php">
 						<i class="fa fa-bar-chart"></i>
 						<span>Income Statement</span>
 						</a>
