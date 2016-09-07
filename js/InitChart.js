@@ -75,8 +75,12 @@ function initChart(){
 					subseries.label = key;
 					subseries.data = val;
 					if(key!="Net Income"){
-						console.log("not net")
+					
 						subseries.bars = { show:true, barWidth:0.15,order:1};
+						
+					}else{
+						subseries.lines = { show:true };
+						subseries.points = { show:true };
 					}
 					series.push(subseries);
 					//console.log(key);
@@ -198,8 +202,13 @@ function makeChart(ids,types){
 					if(key!="Net Income"){
 					
 						subseries.bars = { show:true, barWidth:0.15,order:1};
+						
+					}else{
+						subseries.lines = { show:true };
 						subseries.points = { show:true };
 					}
+					
+					
 					series.push(subseries);
 					//console.log(key);
 			});

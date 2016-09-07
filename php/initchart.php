@@ -70,7 +70,7 @@
 									INNER JOIN journals on journal_entries.journal_id = journals.journal_id
 								where account_types.acc_types_id = 3 
 								AND YEAR(journals.journal_date) = YEAR(CURRENT_DATE) 
-								AND journal_details.is_debit = 1 group by accounts.account_name, MONTH(journals.journal_date)");
+								AND journal_details.is_debit = 1 group by type, MONTH(journals.journal_date)");
 			while($row = $query->fetch(PDO::FETCH_ASSOC)){
 				$array["Expenses"][] = array($row['month_of_expense']-1, $row['total']);
 			}
