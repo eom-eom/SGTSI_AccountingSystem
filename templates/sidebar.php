@@ -101,7 +101,7 @@
 							<span>Archived Accounts</span>
 							</a>
 						</li>
-						<li><a href='#'>
+						<li><a href='restore_page.php'>
 							<i class='fa fa-database'></i>
 							<span>Backup Restore</span>
 							</a>

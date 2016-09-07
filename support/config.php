@@ -1,6 +1,11 @@
 <?php
 	session_start();
 	define("APPNAME","Accounting System");
+	define("BACKUP_PATH", "C:\\xampp\\htdocs\\SGTSI_AccountingSystem\\DatabaseBackups\\");
+	$server_name='localhost';
+	$database = 'accounting';
+	$username = 'root';
+	$password = '';
 	
 	//UI//
 	function addHead($pageTitle=APPNAME,$DirectoryLevel=0){
@@ -69,6 +74,23 @@
 	
 	//Database//
 	require_once("class.myPDO.php");
-	$connection = new myPDO("accounting",'root','');
+	$connection = new myPDO($database,$username,$password);
+	
+	function backUp($server_name,$username,$database,$mysqldumppath="C:/xampp/mysql/bin/"){
+		
+		
+		$cmd = $mysqldumppath."mysqldump --routines -h ".$server_name." -u ".$username." ".$database." > " . BACKUP_PATH."". date("Ymd")."_".$database.".sql";
+		echo exec($cmd);
+		
+	}
+	
+	function restore($server_name,$username,$database,$filename,$mysqldumppath="C:/xampp/mysql/bin/"){
+		$restore_file  = "C:\\xampp\\htdocs\\SGTSI_AccountingSystem\\DatabaseBackups\\".$filename;
+		
+
+		$cmd = $mysqldumppath."mysql -h $server_name -u $username $database < $restore_file";
+		exec($cmd);
+	}
+	
 	//END Data
 ?>
