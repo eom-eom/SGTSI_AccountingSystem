@@ -97,20 +97,20 @@ function noSpecialChar(evt){
 	
 function amountDTotal() {
 	
-	equate();
+	
    var numbers = parseFloat(document.getElementById('AmountDr').value);
    var total = parseFloat(document.getElementById('debit_total').value);
 	total = total +numbers;
-	
-  document.getElementById('debit_total').value = total;
-  
+   document.getElementById('debit_total').value = total;
+   equate();
   
 }
 
 function amountCTotal() {
-	equate();
+	
    var numbers = parseFloat(document.getElementById('AmountCr').value);
   document.getElementById('credit_total').value = parseFloat(document.getElementById('credit_total').value) + numbers;
+  equate();
   
 }
 	
@@ -156,6 +156,9 @@ function amountCTotal() {
 			document.getElementById('AmountCr').value = "";
 			document.getElementById('credit_total').value = 0;
 			document.getElementById('debit_total').value = 0;
+
+		var pass = document.getElementById('pass');
+			pass.disabled = true;
 			
 	}
 	
