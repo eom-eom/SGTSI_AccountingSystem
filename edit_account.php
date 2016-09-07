@@ -35,7 +35,7 @@
 						<div class='form-group' align='left'>
                             <label class='col-sm-3 control-label'>Account No.:</label>
                                 <div class='col-md-8'>
-                                    <input type="text" name="accno" class="form-control" value=<?php echo $acc_id;?> disabled>
+                                    <input type="text" name="accno" class="form-control" value=<?php echo $acc_id;?> >
                                 </div>
                         </div>
 
