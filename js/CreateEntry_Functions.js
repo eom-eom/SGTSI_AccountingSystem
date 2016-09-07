@@ -90,8 +90,6 @@ function noSpecialChar(evt){
 		DelCr.innerHTML = "<button type='button' value="+AmountCr+" class='btn bg-maroon btn-xs fa fa-trash' onclick='deleteCr(this)'></button>"
 		
 	
-		
-
 				
 		return false;
 	}
@@ -99,7 +97,7 @@ function noSpecialChar(evt){
 	
 function amountDTotal() {
 	
-	
+	equate();
    var numbers = parseFloat(document.getElementById('AmountDr').value);
    var total = parseFloat(document.getElementById('debit_total').value);
 	total = total +numbers;
@@ -110,6 +108,7 @@ function amountDTotal() {
 }
 
 function amountCTotal() {
+	equate();
    var numbers = parseFloat(document.getElementById('AmountCr').value);
   document.getElementById('credit_total').value = parseFloat(document.getElementById('credit_total').value) + numbers;
   
@@ -117,28 +116,23 @@ function amountCTotal() {
 	
 	function deleteDr(r){
 		
-		equate();
-		
 		    var i = r.parentNode.parentNode.rowIndex;
 			document.getElementById("DebitTable").deleteRow(i);
 			var mis = parseFloat(r.value);
 		
 			document.getElementById('debit_total').value = parseFloat(document.getElementById('debit_total').value) - mis;
-		
+		equate();
 	}
 	
 	
 	function deleteCr(r){
 		
-		equate();
-		
 		    var i = r.parentNode.parentNode.rowIndex;
 			document.getElementById("CreditTable").deleteRow(i);
-			
 			var mis = parseFloat(r.value);
-		
+			
 			document.getElementById('credit_total').value = parseFloat(document.getElementById('credit_total').value) - mis;
-		
+		equate();
 	}
 	
 	
@@ -160,6 +154,9 @@ function amountCTotal() {
 			cr_id=1;
 			document.getElementById('AmountDr').value = "";
 			document.getElementById('AmountCr').value = "";
+			document.getElementById('credit_total').value = 0;
+			document.getElementById('debit_total').value = 0;
+			
 	}
 	
 	function equate(){
@@ -167,10 +164,10 @@ function amountCTotal() {
 		var credit_total = parseFloat(document.getElementById('credit_total').value);
 		var pass = document.getElementById('pass')
 		
-		if(debit_total == credit_total){
-			pass.removeAttribute('disabled');
-		}else{
+		if( debit_total != credit_total){
 			pass.disabled = true;
+		}else{
+			pass.removeAttribute('disabled');
 		}
 		
 	}
