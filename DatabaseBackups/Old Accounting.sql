@@ -62,7 +62,7 @@ CREATE TABLE `accounts` (
 
 LOCK TABLES `accounts` WRITE;
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` VALUES (1001,'Cash',5,0),(1002,'Petty Cash',5,0),(1003,'Accounts Recievable',5,0),(3001,'Salaries Expenses',3,0),(3002,'Utilities Expenses',3,0),(3003,'Supplies Expense',3,0),(4001,'Accounts Payable',6,0),(5001,'Service Income',1,0),(5002,'Sales',1,0);
+INSERT INTO `accounts` VALUES (1001,'Cash',5,0),(1002,'Service Income',1,0),(1003,'Sales',1,0),(2001,'Accounts Payable',6,0),(2102,'Utilities Expenses',3,0),(2311,'Office Expenses',3,0),(3102,'Accounts Recievable',4,0),(5501,'Accounts Receivable',4,0);
 /*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,14 +74,14 @@ DROP TABLE IF EXISTS `journal_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `journal_details` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `account_id` bigint(20) DEFAULT NULL,
   `journal_entry_no` bigint(20) DEFAULT NULL,
   `amount` double DEFAULT NULL,
   `is_debit` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `journal_details` (
 
 LOCK TABLES `journal_details` WRITE;
 /*!40000 ALTER TABLE `journal_details` DISABLE KEYS */;
-INSERT INTO `journal_details` VALUES (1,3002,16011,2000,1),(2,1001,16011,2000,0),(3,1001,16021,2300,1),(4,1003,16021,2300,0),(5,3001,16022,500,1),(6,1001,16022,500,0),(7,1001,16012,10300,1),(8,5001,16012,10300,0),(9,3003,16013,4000,1),(10,1001,16013,4000,0),(11,1001,16023,5000,1),(12,5002,16023,5000,0);
+INSERT INTO `journal_details` VALUES (0,2001,16031,1000,1),(1,1001,16031,1000,0),(3,2102,16032,2500,1),(4,2311,16032,1000,1),(5,1001,16032,3500,0),(7,2001,16041,1000,1),(8,1001,16041,1000,0),(9,1001,16042,3500,1),(10,5501,16042,3500,0),(12,2311,16402,1000,1),(13,2102,16033,2000,1),(14,1001,16033,2000,0),(15,2102,16123,5000,1),(16,1001,16123,5000,0),(17,1001,16034,2300,1),(18,1002,16034,2300,0),(19,1001,16035,4000,1),(20,1003,16035,4000,0),(21,1001,16044,3400,1),(22,1002,16044,3400,0),(23,1001,16045,1400,1),(24,1003,16045,1400,0);
 /*!40000 ALTER TABLE `journal_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `journal_entries` (
   `date_of_entry` date NOT NULL,
   `description` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +117,7 @@ CREATE TABLE `journal_entries` (
 
 LOCK TABLES `journal_entries` WRITE;
 /*!40000 ALTER TABLE `journal_entries` DISABLE KEYS */;
-INSERT INTO `journal_entries` VALUES (1,16011,1,'2016-01-04','Payed Utilites'),(2,16021,2,'2016-08-17','Recieved cash'),(3,16022,2,'2016-09-02','Payed Salaries'),(4,16012,1,'2016-09-07','Income'),(5,16013,1,'2016-09-27','Payed For Supplies'),(6,16023,2,'2016-09-13','Recieved Sales INcome');
+INSERT INTO `journal_entries` VALUES (0,16031,1,'2016-03-03','Payed Debts'),(1,16032,1,'2016-03-04','Purchased Office Equipment and payed bills'),(2,16041,2,'2016-07-08','Payed Debts'),(3,16042,2,'2016-07-15','Received Cash'),(4,16033,1,'2016-08-12','Payed Salaries Expense'),(5,16123,2,'2016-08-04','Payed Utilities'),(6,16034,1,'2016-08-11','Recieved Income'),(7,16044,2,'2016-08-17','Recieved Income'),(8,16035,1,'2016-08-11','Recieved Sales'),(9,16045,2,'2016-08-10','Recieved sales');
 /*!40000 ALTER TABLE `journal_entries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +135,7 @@ CREATE TABLE `journals` (
   `ledger_id` bigint(20) DEFAULT NULL,
   `is_archived` int(2) NOT NULL,
   PRIMARY KEY (`journal_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,8 +144,33 @@ CREATE TABLE `journals` (
 
 LOCK TABLES `journals` WRITE;
 /*!40000 ALTER TABLE `journals` DISABLE KEYS */;
-INSERT INTO `journals` VALUES (1,'2016-01-01','Journal For January\r\n',0,0),(2,'2016-02-01','Journal For February\r\n',0,0);
+INSERT INTO `journals` VALUES (1,'2016-01-21','Journal For March 2016\r\n',0,0),(2,'2016-02-01','Journal for April 2016\r\n',0,0),(3,'2016-05-16','Journal For May 2016\r\n',0,0),(7,'2016-07-16','Journal for July 2016\r\n\r\n',0,0),(8,'2017-01-16','Journal For January 2017',0,0),(9,'2016-10-13','ED',0,0);
 /*!40000 ALTER TABLE `journals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ledgers`
+--
+
+DROP TABLE IF EXISTS `ledgers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ledgers` (
+  `ledger_id` bigint(20) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `is_archive` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`ledger_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ledgers`
+--
+
+LOCK TABLES `ledgers` WRITE;
+/*!40000 ALTER TABLE `ledgers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ledgers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -164,7 +189,7 @@ CREATE TABLE `users` (
   `is_deleted` varchar(50) DEFAULT NULL,
   `is_logged_in` int(1) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +198,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Peter','admin','3dVoJ2bvdLynZysmiFxCaVySFMONfzv+IZKwJuE14wU=','admin','0',1),(2,'Lawrenc','admin1','UQ6ZD4B3CjZPSiaMt1Ch185x2vRjKHFTbNzi4O9SNS8=','admin','0',0),(3,'SAd','New','Tqar+gfCChdecU326IJE42EGTCf2hhCrRgsptasdx98=','Administrator','0',0);
+INSERT INTO `users` VALUES (1,'Peter','admin','3dVoJ2bvdLynZysmiFxCaVySFMONfzv+IZKwJuE14wU=','admin','0',1),(2,'Lawrenc','admin1','UQ6ZD4B3CjZPSiaMt1Ch185x2vRjKHFTbNzi4O9SNS8=','admin','0',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,4 +244,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-07 14:02:56
+-- Dump completed on 2016-09-07 13:06:26
