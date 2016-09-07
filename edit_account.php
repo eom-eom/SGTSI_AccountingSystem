@@ -35,21 +35,21 @@
 						<div class='form-group' align='left'>
                             <label class='col-sm-3 control-label'>Account No.:</label>
                                 <div class='col-md-8'>
-                                    <input type="text" class="form-control" value=<?php echo $acc_id;?> >
+                                    <input type="text" name="accno" class="form-control" value=<?php echo $acc_id;?> disabled>
                                 </div>
                         </div>
 
                         <div class='form-group' align='left'>
                             <label class='col-sm-3 control-label'>Account Name:</label>
                                 <div class='col-md-8'>
-                                    <input type="text" class="form-control" value=<?php echo $account_name;?> >
+                                    <input type="text" name="accname" class="form-control" value=<?php echo $account_name;?> >
                                 </div>
                         </div>
 								
 						<div class='form-group' align='left'>
 							<label class='col-sm-3 control-label'>Account Type:</label>
 								<div class='col-md-8'>
-									<select name='acct_type' required class="form-control">
+									<select name='acctype' required class="form-control">
 										<option><?php echo $account_type;?> </option>
 										<option> </option>
 										<option value="1">Revenue(Main) </option>
