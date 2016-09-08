@@ -57,7 +57,7 @@
 				<span>Financial Statement</span>
 			</a>
 			<ul class="treeview-menu menu-open">
-					<li><a href="#">
+					<li><a href="balanceSheet.php">
 						<i class="fa fa-bar-chart"></i>
 						<span>Balance Sheet</span>
 						</a>

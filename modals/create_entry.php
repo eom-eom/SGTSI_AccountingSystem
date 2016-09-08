@@ -60,7 +60,8 @@
 						<label>Accounts:</label>					
 						<select class="form-control" id="selectdr">
 							<!-- Insert Options -->
-							<?php
+									<option disabled selected>Account Title</option>
+																<?php
 								$accounttable =$connection -> myQuery("SELECT account_name,acc_id FROM accounts;");
 			
 									while($result = $accounttable->fetch(PDO::FETCH_ASSOC)){
@@ -107,6 +108,7 @@
 							<label>Accounts:</label>
 						<select class="form-control" id="selectcr">
 						<!-- Insert Options -->
+							<option disabled selected>Account Title</option>
 							<?php
 								$accounttable =$connection -> myQuery("SELECT account_name,acc_id FROM accounts;");
 			
