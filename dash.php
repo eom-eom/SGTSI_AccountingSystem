@@ -1,7 +1,7 @@
 <?php
 	require_once('support/config.php');
 	if(loggedId()){
-		addHead('Dashboard');
+		addHead('General Journal');
 		addNavBar();
 		addSideBar();
 	}else{
@@ -11,7 +11,7 @@
 	
 ?>
 
-<div class="content-wrapper fixed">
+<div class="content-wrapper fixed" >
 <!-- add content here-->
 	<br>
 	<div class="col-lg-12">
@@ -24,7 +24,7 @@
 		</div>
 		</div>
 		<div class="box box-body">
-			 <div id="linegraph" style="width:100%px;height:40vh;"></div>
+			 <div id="linegraph" class="table-responsive"  style="width:100%px;height:40vh;"></div>
 		</div>
 	</div>
 	
@@ -36,7 +36,7 @@
 		</div>	
 		</div>
 		<div class="box box-body">
-			 <div id="linegraph1" style="width:50%px;height:25vh;"></div>
+			 <div id="linegraph1" class="table-responsive" style="width:50%px;height:25vh;"></div>
 		</div>
 		
 	</div>
@@ -51,7 +51,7 @@
 		</div>
 
 		<div class="box box-body">
-			 <div id="linegraph2" style="width:50%px;height:25vh;"></div>
+			 <div id="linegraph2" class="table-responsive" style="width:50%px;height:25vh;"></div>
 		</div>
 	</div>
 
@@ -76,8 +76,10 @@
 <script type="text/javascript" >
 
 	initChart();
+
 		
 </script>
+
 <?php
 	include_once('modals/chart_modal.php');
 ?>

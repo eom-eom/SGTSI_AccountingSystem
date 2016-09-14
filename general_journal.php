@@ -22,9 +22,7 @@
 	?>
 	<div class="box">
 		<div class="box-body">
-				<input type="text" class="container-fluid" size="30" name="search" placeholder="Search">
 				
-				<button type="submit" class="btn btn-primary" id="btn-search" name="btnsearch"><i class="fa fa-search"></i> </button>
 							
 				<button type="submit" class="btn btn-primary" id="btn-add" onclick='createJournal();' name="btnadd" style="float:right;"><i class="fa fa-plus"> &nbsp; Add General Journal</i>
 				</button>
@@ -32,9 +30,9 @@
 		
 		</div>
 	<div class="box-body">
-		<table id="table" class="table responsive-table table-bordered table-striped">
+		<table id='dataTables' class="table responsive-table table-bordered table-striped" >
 			<thead>
-				<tr class="tableheader">
+				<tr >
 					<th>ID</th>
 					<th>DATE OF JOURNAL</th>
 					<th>MONTH YEAR</th>
@@ -44,27 +42,7 @@
 			</thead>
 			<tbody>
 				<!-- <tr class="tableheader"> -->
-<?php
-			$journaltable =$connection -> myQuery("SELECT * FROM journals;");
-			
-				while($result = $journaltable->fetch(PDO::FETCH_ASSOC)){
-					if($result['is_archived']==0){
-					$id= $result['journal_id'];
-					$journal_date = $result['journal_date'];
-					$description = $result['description'];
-?>
-					<tr>
-						<td><?php echo "$id ";?></td>
-						<td><?php echo "$journal_date ";?></td>
-						<td><?php echo date("F  Y",strtotime($journal_date));?>
-						<td><?php echo "$description ";?></td>
-						<td> 
-							<button type="submit" class="btn btn-success" id="btn-view" data-toggle="tooltip" data-placement="top" title="Open Journal" onclick="redirect(<?php echo "$id";?>);" name="btnview"><i class="fa fa-eye"> </i></button> 
-							<button type="submit" class="btn bg-maroon " id="btn-edit" name="btnedit" data-toggle="tooltip" data-placement="top" title="Edit Journal Info"  onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
-							<button type="submit" class="btn btn-warning" id="btn-archive" name="btnarchive" data-toggle="tooltip" data-placement="top" title="Archive this journal"  onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
-						</td>
-				</tr><?php }
-				}; ?>
+
 
 					
 			</tbody>
@@ -76,6 +54,8 @@
 
  
 </div>
+
+
 
 <script type="text/javascript">
 
@@ -112,3 +92,28 @@
 <?php
 	addFoot();
 ?>
+<script>
+    var dttable="";
+      $(document).ready(function() {
+        dttable=$('#dataTables').DataTable({
+                //"scrollY":"400px",
+                "scrollX":"100%",
+                "searching": true,
+                "processing": true,
+                "serverSide": true,
+                "select":true,
+                "ajax":{
+                  "url":"ajax/general_journal.php"
+                  
+                },"language": {
+                    "zeroRecords": "General Journal Not Found."
+                },
+                order:[[0,'desc']]
+                ,"columnDefs": [	
+                    { "orderable": false, "targets": [-1] }
+                  ] 
+        });
+        
+    });
+    
+</script>
