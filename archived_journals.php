@@ -27,37 +27,18 @@
 				
 		</div>
 	<div class="box-body">
-		<table id="table" class="table responsive-table table-bordered table-striped">
+		<table id='dataTables' class="table responsive-table table-bordered table-striped" >
 			<thead>
 				<tr class="tableheader">
 					<th>ID</th>
 					<th>DATE OF JOURNAL</th>
+					<th>MONTH YEAR</th>
 					<th>DESCRIPTION</th>
 					<th>ACTION</th>
 				</tr>
 			</thead>
 			<tbody>
 				<!-- <tr class="tableheader"> -->
-<?php
-			$journaltable =$connection -> myQuery("SELECT * FROM journals;");
-			
-				while($result = $journaltable->fetch(PDO::FETCH_ASSOC)){
-					if($result['is_archived']==1){
-					$id= $result['journal_id'];
-					$journal_date = $result['journal_date'];
-					$description = $result['description'];
-?>
-					<tr>
-						<td><?php echo "$id ";?></td>
-						<td><?php echo "$journal_date ";?></td>
-						<td><?php echo "$description ";?></td>
-						<td> 
-							<button type="submit" class="btn btn-success" id="btn-view" data-toggle="tooltip" data-placement="top" title="Open Entries"  onclick="redirect(<?php echo "$id";?>);" name="btnview"><i class="fa fa-eye"> </i></button> 
-							
-							<button type="submit" class="btn btn-warning" id="btn-archive" name="btnarchive" data-toggle="tooltip" data-placement="top" title="Restore this Journal"  onclick="archive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
-						</td>
-				</tr><?php }
-				}; ?>
 
 					
 			</tbody>
@@ -96,3 +77,28 @@
 <?php
 	addFoot();
 ?>
+<script>
+    var dttable="";
+      $(document).ready(function() {
+        dttable=$('#dataTables').DataTable({
+                //"scrollY":"400px",
+                "scrollX":"100%",
+                "searching": true,
+                "processing": true,
+                "serverSide": true,
+                "select":true,
+                "ajax":{
+                  "url":"ajax/archived_journals.php"
+                  
+                },"language": {
+                    "zeroRecords": "General Journal Not Found."
+                },
+                order:[[0,'desc']]
+                ,"columnDefs": [	
+                    { "orderable": false, "targets": [-1] }
+                  ] 
+        });
+        
+    });
+    
+</script>

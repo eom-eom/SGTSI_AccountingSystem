@@ -5,33 +5,27 @@
 		setAlert('Please log in to continue','danger');
 	}
 
-$primaryKey ='journal_id';
-$index=-1;
+	$primaryKey ='acc_id';
+	$index=-1;
 
-$columns = array(
-array( 'db' => 'journal_id','dt' => ++$index,'formatter'=>function($d,$row)
-{
-	return htmlspecialchars($d);
-} ),
-array( 'db' => 'journal_date','dt' => ++$index ,'formatter'=>function($d,$row)
-{
-    $date=date_create($d);
-    return htmlspecialchars($date->format("m-d-Y"));
-}),
-array( 'db' => 'journal_date','dt' => ++$index ,'formatter'=>function($d,$row)
-{
-    $date=date_create($d);
-    return htmlspecialchars($date->format("F Y"));
-}),
-array( 'db' => 'description','dt' => ++$index,'formatter'=>function($d,$row)
-{
-	return htmlspecialchars($d);
-} ),
+	$columns = array(
+		array( 'db' => 'acc_id','dt' => ++$index,'formatter'=>function($d,$row)
+		{
+			return htmlspecialchars($d);
+		} ),
 
+		array( 'db' => 'account_name','dt' => ++$index,'formatter'=>function($d,$row)
+		{
+			return htmlspecialchars($d);
+		} ),
 
+		array( 'db' => 'name','dt' => ++$index,'formatter'=>function($d,$row)
+		{
+			return htmlspecialchars($d);
+		} ),
 
-array(
-        'db'        => 'journal_id',
+		array(
+        'db'        => 'acc_id',
         'dt'        => ++$index,
         'formatter' => function( $d, $row ) 
         {
@@ -44,11 +38,11 @@ array(
                 //     $action_buttons.="<a class=' btn btn-sm btn-success btn-flat' title='View Details' href='forApprovalDetails.php?id={$d}'><span class='fa fa-eye'></span></a>&nbsp";
                 //     $action_buttons.="<button class='btn btn-sm btn-danger btn-flat'  title='Reject Loan Application' onclick='reject(\"{$row['loan_code']}\")'><span  class='fa fa-close'></span></button>&nbsp;";
                 // endif;
-          	$action_buttons.=" <button type='submit' class='btn btn-success' id='btn-view' data-toggle='tooltip' data-placement='top' title='Open Journal' onclick='redirect({$d});' name='btnview'><i class='fa fa-eye'> </i></button>";
+          	$action_buttons.=" <button type='submit' class='btn bg-maroon' id='btn-edit' data-toggle='tooltip' data-placement='top' title='Edit Account Info' name='btnedit' onclick='edit({$d});'><i class='fa fa-edit'> </i></button>";
 
-			$action_buttons.= "<button type='submit' class='btn bg-maroon ' id='btn-edit' name='btnedit' data-toggle='tooltip' data-placement='top' title='Edit Journal Info'  onclick='edit({$d})'><i class='fa fa-edit'> </i></button>";
+			$action_buttons.= "<button type='submit' class='btn btn-warning' id='btn-archive' name='btnarchive' data-toggle='tooltip' data-placement='top' title='Archive this account' onclick='archive({$d});'><i class='fa fa-file-archive-o'> </i></button>";
 
-			$action_buttons.="<button type='submit' class='btn btn-warning' id='btn-archive' name='btnarchive' data-toggle='tooltip' data-placement='top' title='Archive this journal'  onclick='archive({$d});'><i class='fa fa-file-archive-o'> </i></button>";
+
                 //reject(\"{$row['id']}\")   --------- forApprovalDetails.php?id={$d}
             return $action_buttons;
 
@@ -58,19 +52,17 @@ array(
 	);
 	require( '../support/ssp.class.php' );
 
-
 		$limit = SSP::limit( $_GET, $columns );
-$order = SSP::order( $_GET, $columns );
+		$order = SSP::order( $_GET, $columns );
 
-$where = SSP::filter( $_GET, $columns, $bindings );
-$whereAll="";
-$whereResult="";
+		$where = SSP::filter( $_GET, $columns, $bindings );
+		$whereAll="";
+		$whereResult="";
 
-$filter_sql="";
-$whereAll=" is_archived='0'" ;
-$whereAll.=$filter_sql;
-
-function jp_bind($bindings)
+		$filter_sql="";
+		$whereAll=" is_deleted='0'" ;
+		$whereAll.=$filter_sql;
+		function jp_bind($bindings)
 {
     $return_array=array();
     if ( is_array( $bindings ) ) 
@@ -87,7 +79,7 @@ function jp_bind($bindings)
 $where.= !empty($where) ? " AND ".$whereAll:"WHERE ".$whereAll;
 $bindings=jp_bind($bindings);
 $complete_query="SELECT SQL_CALC_FOUND_ROWS `".implode("`, `", SSP::pluck($columns, 'db'))."`
-             FROM `vw_journals` {$where} {$order} {$limit}";    
+             FROM `vw_chartAcc` {$where} {$order} {$limit}";    
 
 //NEED TO CREATE VIEWS.
 
@@ -103,13 +95,5 @@ $json['recordsFiltered']=$recordsFiltered;
 $json['data']=SSP::data_output($columns,$data);
 
 echo json_encode($json);
-
-// $resTotalLength = SSP::sql_exec( $db, $bindings,
-//             "SELECT COUNT(`{$primaryKey}`)
-//              FROM   `$table` ".
-//             $whereAllSql
-//         );
-
-die;
-
+	die;
 ?>

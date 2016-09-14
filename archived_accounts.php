@@ -26,7 +26,7 @@
 				<button type="submit" class="btn btn-primary" id="btn-search" name="btnsearch"><i class="fa fa-search"></i> </button>
 		</div>
 	<div class="box-body">
-		<table id="table" class="table responsive-table table-bordered table-striped">
+		<table id='dataTables' class="table responsive-table table-bordered table-striped" >
 			<thead>
 				<tr class="tableheader">
 					<th>Account No</th>
@@ -37,25 +37,7 @@
 			</thead>
 			<tbody>
 
-<?php
-			$accounttable =$connection -> myQuery("SELECT * FROM `accounts` INNER JOIN account_types on accounts.type = account_types.acc_types_id;");
-			
-				while($result = $accounttable->fetch(PDO::FETCH_ASSOC)){
-					if($result['is_deleted']==1){
-					$id= $result['acc_id'];
-					$account_name = $result['account_name'];
-					$name = $result['name'];
-?>
-					<tr>
-						<td><?php echo "$id";?></td>
-						<td><?php echo "$account_name ";?></td>
-						<td><?php echo "$name ";?></td>
-						<td> 
-							
-							<button type="submit" class="btn btn-warning" id="btn-archive" data-toggle="tooltip" data-placement="top" title="Restor this Account Info" name="btnarchive" onclick="unarchive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
-						</td>
-				</tr><?php }
-				}; ?>
+
 					
 			</tbody>
 		</table>
@@ -89,3 +71,28 @@
 <?php
 	addFoot();
 ?>
+<script>
+    var dttable="";
+      $(document).ready(function() {
+        dttable=$('#dataTables').DataTable({
+                //"scrollY":"400px",
+                "scrollX":"100%",
+                "searching": true,
+                "processing": true,
+                "serverSide": true,
+                "select":true,
+                "ajax":{
+                  "url":"ajax/archived_accounts.php"
+                  
+                },"language": {
+                    "zeroRecords": "Account Not Found."
+                },
+                order:[[0,'desc']]
+                ,"columnDefs": [	
+                    { "orderable": false, "targets": [-1] }
+                  ] 
+        });
+        
+    });
+    
+</script>

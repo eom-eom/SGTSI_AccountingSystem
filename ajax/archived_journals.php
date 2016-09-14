@@ -46,7 +46,7 @@ array(
                 // endif;
           	$action_buttons.=" <button type='submit' class='btn btn-success' id='btn-view' data-toggle='tooltip' data-placement='top' title='Open Journal' onclick='redirect({$d});' name='btnview'><i class='fa fa-eye'> </i></button>";
 
-			$action_buttons.= "<button type='submit' class='btn bg-maroon ' id='btn-edit' name='btnedit' data-toggle='tooltip' data-placement='top' title='Edit Journal Info'  onclick='edit({$d})'><i class='fa fa-edit'> </i></button>";
+			
 
 			$action_buttons.="<button type='submit' class='btn btn-warning' id='btn-archive' name='btnarchive' data-toggle='tooltip' data-placement='top' title='Archive this journal'  onclick='archive({$d});'><i class='fa fa-file-archive-o'> </i></button>";
                 //reject(\"{$row['id']}\")   --------- forApprovalDetails.php?id={$d}
@@ -67,7 +67,7 @@ $whereAll="";
 $whereResult="";
 
 $filter_sql="";
-$whereAll=" is_archived='0'" ;
+$whereAll=" is_archived='1'" ;
 $whereAll.=$filter_sql;
 
 function jp_bind($bindings)
