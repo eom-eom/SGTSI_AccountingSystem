@@ -14,9 +14,9 @@
 <script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.js"></script>
 <script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.categories.js"></script>
 <script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.orderBars.js"></script>
-<<<<<<< HEAD
-<script src="js/accounting.js"></script>	
-=======
+<!-- <<<<<<< HEAD
+ --><script src="js/accounting.js"></script>	
+<!-- ======= -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
@@ -30,7 +30,7 @@
 <script type="text/javascript" src="plugins/datatables/media/js/buttons.print.min.js"></script>
 
 	
->>>>>>> origin/master
+<!-- >>>>>>> origin/master -->
 
 <script type="text/javascript">
 $(function() {
