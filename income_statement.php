@@ -69,7 +69,7 @@
 						</select>
 					</div>
 					<button type='submit' class='btn btn-success'>Make Income Statement</button>
-					<button type='button' class='btn btn-success'>Print</button>
+					<a href='php/print_income.php'><button type='button' class='btn btn-success' >Print</button></a>
 				</div>
 		</form>
 		</div>

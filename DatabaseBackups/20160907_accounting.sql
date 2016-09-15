@@ -81,7 +81,7 @@ CREATE TABLE `journal_details` (
   `is_debit` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `journal_details` (
 
 LOCK TABLES `journal_details` WRITE;
 /*!40000 ALTER TABLE `journal_details` DISABLE KEYS */;
-INSERT INTO `journal_details` VALUES (1,3002,16011,2000,1),(2,1001,16011,2000,0),(3,1001,16021,2300,1),(4,1003,16021,2300,0),(5,3001,16022,500,1),(6,1001,16022,500,0),(7,1001,16012,10300,1),(8,5001,16012,10300,0),(9,3003,16013,4000,1),(10,1001,16013,4000,0),(11,1001,16023,5000,1),(12,5002,16023,5000,0);
+INSERT INTO `journal_details` VALUES (1,3002,16011,2000,1),(2,1001,16011,2000,0),(3,1001,16021,2300,1),(4,1003,16021,2300,0),(5,3001,16022,500,1),(6,1001,16022,500,0),(7,1001,16012,10300,1),(8,5001,16012,10300,0),(9,3003,16013,4000,1),(10,1001,16013,4000,0),(11,1001,16023,5000,1),(12,5002,16023,5000,0),(13,1001,16014,2000,1),(14,5002,16014,2000,0);
 /*!40000 ALTER TABLE `journal_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `journal_entries` (
   `date_of_entry` date NOT NULL,
   `description` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +117,7 @@ CREATE TABLE `journal_entries` (
 
 LOCK TABLES `journal_entries` WRITE;
 /*!40000 ALTER TABLE `journal_entries` DISABLE KEYS */;
-INSERT INTO `journal_entries` VALUES (1,16011,1,'2016-01-04','Payed Utilites'),(2,16021,2,'2016-08-17','Recieved cash'),(3,16022,2,'2016-09-02','Payed Salaries'),(4,16012,1,'2016-09-07','Income'),(5,16013,1,'2016-09-27','Payed For Supplies'),(6,16023,2,'2016-09-13','Recieved Sales INcome');
+INSERT INTO `journal_entries` VALUES (1,16011,1,'2016-01-04','Payed Utilites'),(2,16021,2,'2016-08-17','Recieved cash'),(3,16022,2,'2016-09-02','Payed Salaries'),(4,16012,1,'2016-09-07','Income'),(5,16013,1,'2016-09-27','Payed For Supplies'),(6,16023,2,'2016-09-13','Recieved Sales INcome'),(7,16014,1,'2016-09-15','Sales this month');
 /*!40000 ALTER TABLE `journal_entries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,4 +219,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-07 14:02:56
+-- Dump completed on 2016-09-07 17:16:53

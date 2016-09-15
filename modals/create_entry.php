@@ -120,7 +120,7 @@
 						
 						
 						<div class="input-group margin input-group-sm">
-								<input type="text" class="form-control" placeholder="Amount" id = "AmountCr"  onkeypress="return isNumberKey(event)">
+								<input type="text" class="form-control" placeholder="Amount" id = "AmountCr" onchange="change(this);" onkeypress="return isNumberKey(event)">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-primary btn-flat " onclick="return Cr();">Add Credit</button>
 								<button type="button"  id="creset" class="btn btn-danger btn-flat ">Cancel</button>

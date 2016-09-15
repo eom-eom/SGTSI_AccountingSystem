@@ -101,7 +101,7 @@
 							<span>Archived Accounts</span>
 							</a>
 						</li>
-						<li><a href='restore_page.php'>
+						<li><a onclick='databaseModal();' role='button'>
 							<i class='fa fa-database'></i>
 							<span>Backup Restore</span>
 							</a>
@@ -138,8 +138,11 @@
 						</li>
 					</ul>
 				</li>";}
+				
+				
 		?>
 		
 	</ul><!-- /.sidebar-menu -->
   </div>
 </div><!-- /.main-sidebar -->
+

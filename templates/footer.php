@@ -1,3 +1,6 @@
+<?php
+	include_once("modals/database_commands.php");	
+?>
 </body>
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
@@ -11,7 +14,7 @@
 <script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.js"></script>
 <script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.categories.js"></script>
 <script language="javascript" type="text/javascript" src="plugins/flot/jquery.flot.orderBars.js"></script>
-	
+<script src="js/accounting.js"></script>	
 
 <script type="text/javascript">
 $(function() {
