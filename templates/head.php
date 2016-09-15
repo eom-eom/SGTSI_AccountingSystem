@@ -14,6 +14,8 @@
 		<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"/>
 		<link rel="stylesheet" href="plugins/select2/select2.min.css"/>
+		<link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+
 	</head>
 	
-<body class="skin-blue sidebar-mini sidebar-collapse fixed">
+<body class="skin-blue sidebar-mini sidebar-collapse fixed" >

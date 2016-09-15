@@ -20,7 +20,6 @@
 			redirect('../edit_userform.php?id='.$users_id);
 		}
 		
-		
 	}else{
 		redirect('../index.php');
 	}

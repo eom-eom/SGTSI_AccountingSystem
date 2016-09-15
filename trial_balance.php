@@ -144,7 +144,7 @@
                 for($row = 0; $row<=count($content)-1;$row++){
                   if($row==0){
                     echo "<tr >";
-                    echo "<td style='border-bottom:1pt solid black;'>".$account_title."</td>";
+                    echo "<td >".$account_title."</td>";
                    
                  
                 
@@ -152,19 +152,19 @@
                 }
                 
                 if (floatval($content[$row-1][3]) == 0 && floatval($content[$row-1][4] == 0))  {
-                  echo "<td style='border-bottom:1pt solid black;'>-</td>";
-                  echo "<td style='border-bottom:1pt solid black;'>-</td>";
+                  echo "<td >-</td>";
+                  echo "<td >-</td>";
                   
                   
                   
                 }elseif(floatval($content[$row-1][3]) == 0 && floatval($content[$row-1][2] != 0)){
-                    echo "<td style='border-bottom:1pt solid black;'>-</td>";
-                    echo "<td style='border-bottom:1pt solid black;'><strong>".abs(floatval($content[$row-1][4]))."</strong></td>"; 
+                    echo "<td >-</td>";
+                    echo "<td ><strong>".abs(floatval($content[$row-1][4]))."</strong></td>"; 
                     $creditSum += abs(floatval($content[$row-1][4]));
                 }else
                   {
-                    echo "<td style='border-bottom:1pt solid black;'><strong>".abs(floatval($content[$row-1][4]))."</strong></td>"; 
-                    echo "<td style='border-bottom:1pt solid black;'>-</td>";
+                    echo "<td ><strong>".abs(floatval($content[$row-1][4]))."</strong></td>"; 
+                    echo "<td >-</td>";
                     $debitSum += abs(floatval($content[$row-1][4]));
 
                   }
@@ -173,10 +173,10 @@
                 
               }   
                 echo "<tr >";
-                echo "<td style='border-bottom:1pt solid black;'><strong>Total</strong></td>";
+                echo "<td '><strong>Total</strong></td>";
                 //td
-                echo "<td style='border-bottom:1pt solid black;'><strong>" . $debitSum . "</strong></td>";
-                echo "<td style='border-bottom:1pt solid black;'><strong>". $creditSum . "</strong></td>";
+                echo "<td ><strong>" . $debitSum . "</strong></td>";
+                echo "<td ><strong>". $creditSum . "</strong></td>";
                 echo "</tr>";
             }
             

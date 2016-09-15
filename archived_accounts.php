@@ -36,7 +36,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- <tr class="tableheader"> -->
+
 <?php
 			$accounttable =$connection -> myQuery("SELECT * FROM `accounts` INNER JOIN account_types on accounts.type = account_types.acc_types_id;");
 			
@@ -52,12 +52,10 @@
 						<td><?php echo "$name ";?></td>
 						<td> 
 							
-							<button type="submit" class="btn bg-maroon" id="btn-edit" name="btnedit" onclick="edit(<?php echo "$id";?>)"><i class="fa fa-edit"> </i></button>
-							<button type="submit" class="btn btn-warning" id="btn-archive" name="btnarchive" onclick="unarchive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
+							<button type="submit" class="btn btn-warning" id="btn-archive" data-toggle="tooltip" data-placement="top" title="Restor this Account Info" name="btnarchive" onclick="unarchive(<?php echo "$id";?>);"><i class="fa fa-file-archive-o"> </i></button>
 						</td>
 				</tr><?php }
 				}; ?>
-
 					
 			</tbody>
 		</table>
@@ -65,12 +63,10 @@
 	</div>
 	</div>
 </section>
-
  
 </div>
 
 <script type="text/javascript">
-
 	
 	function unarchive(id){
 	
@@ -89,10 +85,6 @@
 	}
 	
 </script>
-
-
-
-
 
 <?php
 	addFoot();
