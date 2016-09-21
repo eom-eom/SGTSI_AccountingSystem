@@ -161,7 +161,7 @@
 		
 			<div class="modal-footer">
 					<button type="button" class="btn btn-danger pull-left" data-dismiss="modal" onclick="clearTable()">Close</button>   
-					<button type="submit" id="pass" class="btn btn-primary" onclick="GetCellValues()" disabled>Save changes</button>
+					<button type="submit" id="pass" class="btn btn-primary" onclick="GetCellValues()" disabled>Create Entry</button>
 			</div>
 			
 		</div>

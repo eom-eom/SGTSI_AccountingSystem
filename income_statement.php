@@ -120,7 +120,7 @@
 			?>
 				<tr>
 					<td><p style='text-indent:10vh;'><?php echo $row['account_name'];?></td>
-					<td><?php echo number_format( $row['total']);?></td>
+					<td><?php echo number_format( $row['total'],2);?></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -130,7 +130,7 @@
 				<tr>
 					<td><p style='text-indent:10vh;'><b>TOTAL REVENUE</b></td>
 					<td></td>
-					<td><?php echo number_format( $total);?></td>
+					<td><?php echo number_format( $total,2);?></td>
 					<td></td>
 				</tr>
 			
@@ -154,7 +154,7 @@
 			?>
 				<tr>
 					<td><p style='text-indent:10vh;'><?php echo $row['account_name'];?></td>
-					<td><?php echo number_format($row['total']);?></td>
+					<td><?php echo number_format($row['total'],2);?></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -164,7 +164,7 @@
 				<tr>
 					<td><p style='text-indent:10vh;'><b>TOTAL EXPENSES</b></td>
 					<td></td>
-					<td><?php echo number_format( $totalExpense);?></td>
+					<td><?php echo number_format( $totalExpense,2);?></td>
 					<td></td>
 				</tr>
 			<?php	
@@ -175,7 +175,7 @@
 				<td><b>NET INCOME</b></td>
 				<td></td>
 				<td></td>
-				<td><?php echo $total - $totalExpense;?></td>
+				<td><?php echo number_format($total - $totalExpense,2);?></td>
 			</tr>
 			
 			<?php	
